@@ -56,6 +56,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   const etapa4 = await import("./teste-fluxos-final.mjs").catch((e) => (e.code === "ERR_MODULE_NOT_FOUND" ? null : Promise.reject(e)));
   if (etapa4) {
     await etapa4.testar({ page, ir, ok, falas, limparFalas });
+    await etapa4.testarPerfis({ page, ir, ok });
     await etapa4.testarOffline({ browser: page.context().browser(), url: page.url().replace(/#.*$/, ""), ok });
   }
 }

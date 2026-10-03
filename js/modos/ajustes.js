@@ -4,6 +4,7 @@ import { dados } from "../dados.js";
 import { falar, vozesAlemas, sinteseSuportada, reconhecimentoSuportado } from "../audio.js";
 import { config, atualizarConfig, exportar, importar, resetar } from "../progresso.js";
 import { hojeISO } from "../sm2.js";
+import { perfis, perfilAtivo, criarPerfil, renomearPerfil, excluirPerfil, trocarPerfil, chaveProgresso } from "../perfis.js";
 import { podeInstalar, instalar, instalado, ehIOS, offlineSuportado, cacheOfflinePronto, aoMudarInstalacao } from "../pwa.js";
 
 export function render(raiz) {
@@ -64,7 +65,12 @@ export function render(raiz) {
     const f = e.target.files[0];
     if (!f) return;
     try {
-      importar(await f.text());
+      const texto = await f.text();
+      const origem = JSON.parse(texto).perfil;
+      const destino = perfilAtivo().nome;
+      const msg = `Importar ${origem ? `o progresso de "${origem}"` : "este arquivo"} para o perfil "${destino}"? O progresso atual de "${destino}" será substituído.`;
+      if (!confirm(msg)) return (e.target.value = "");
+      importar(texto);
       toast("Progresso importado com sucesso.", "ok");
       setTimeout(() => location.reload(), 600);
     } catch (err) {
@@ -94,6 +100,7 @@ export function render(raiz) {
 
   raiz.append(
     el("div", { class: "cabecalho-modo" }, el("h2", {}, "Ajustes")),
+    secaoPerfis(),
     cartaoInstalar,
     el("div", { class: "cartao config-grade" },
       el("label", {}, "Meta diária de palavras novas", meta, el("small", { class: "muted" }, "Quantas palavras novas entram nos flashcards por dia (as revisões não contam).")),
@@ -106,14 +113,14 @@ export function render(raiz) {
       el("div", {}, el("strong", {}, "Temas ativos"), el("p", { class: "muted" }, "Os modos de estudo usam só os temas marcados."), chipsTema),
     ),
     el("div", { class: "cartao secao" },
-      el("h3", {}, "Backup do progresso"),
-      el("p", { class: "muted" }, "O progresso fica salvo só neste navegador. Exporte um arquivo para não perder ou para levar para outro aparelho."),
+      el("h3", {}, `Backup do progresso de ${perfilAtivo().nome}`),
+      el("p", { class: "muted" }, "O progresso fica salvo só neste navegador. Exporte um arquivo para não perder ou para levar para outro aparelho. Exportar, importar e apagar valem só para o perfil atual."),
       el("div", { class: "grupo-botoes" },
         el("button", { class: "btn btn-primario", onclick: baixar }, "⬇ Exportar progresso (JSON)"),
         el("button", { class: "btn", onclick: () => arquivo.click() }, "⬆ Importar progresso"),
         arquivo,
         el("button", { class: "btn btn-perigo", onclick: () => {
-          if (confirm("Apagar TODO o progresso deste navegador? Exporte antes se quiser guardar.")) {
+          if (confirm(`Apagar todo o progresso de "${perfilAtivo().nome}"? Os outros perfis não são afetados. Exporte antes se quiser guardar.`)) {
             resetar();
             toast("Progresso apagado.");
             setTimeout(() => location.reload(), 600);
@@ -130,9 +137,55 @@ export function render(raiz) {
   return pararDeOuvir;
 }
 
+// Resumo rápido de outro perfil sem carregá-lo inteiro na tela.
+function resumoPerfil(id) {
+  try {
+    const p = JSON.parse(localStorage.getItem(chaveProgresso(id)));
+    const cards = Object.values(p?.cards || {});
+    return `${cards.length} palavra(s) vista(s), ${cards.filter((c) => c.reps >= 2).length} aprendida(s)`;
+  } catch {
+    return "sem progresso";
+  }
+}
+
+function secaoPerfis() {
+  const atual = perfilAtivo();
+  const nomeNovo = el("input", { class: "input", placeholder: "Nome da pessoa", maxlength: 30, "aria-label": "Nome do novo perfil" });
+  const criar = () => {
+    try {
+      const p = criarPerfil(nomeNovo.value);
+      if (confirm(`Perfil "${p.nome}" criado. Trocar para ele agora?`)) trocarPerfil(p.id);
+      else location.reload();
+    } catch (e) {
+      toast(e.message, "erro");
+    }
+  };
+  nomeNovo.addEventListener("keydown", (e) => { if (e.key === "Enter") criar(); });
+  return el("div", { class: "cartao secao", id: "perfis" },
+    el("h3", {}, "👤 Perfis"),
+    el("p", { class: "muted" }, "Cada pessoa que usa este aparelho pode ter o seu perfil, com progresso, meta e ajustes próprios. Perfis não têm senha: quem usa o aparelho pode trocar entre eles."),
+    el("div", { class: "lista-perfis" }, perfis().map((p) =>
+      el("div", { class: `perfil-item ${p.id === atual.id ? "ativo" : ""}` },
+        el("div", {}, el("strong", {}, p.nome), p.id === atual.id ? el("span", { class: "etiqueta et-aprendida", style: "margin-left:6px" }, "em uso") : null,
+          el("div", { class: "muted", style: "font-size:0.85rem" }, resumoPerfil(p.id))),
+        el("div", { class: "grupo-botoes", style: "margin-top:0" },
+          p.id !== atual.id ? el("button", { class: "btn", onclick: () => trocarPerfil(p.id) }, "Usar este") : null,
+          el("button", { class: "btn btn-secundario", onclick: () => {
+            const nome = prompt("Novo nome do perfil:", p.nome);
+            if (nome === null) return;
+            try { renomearPerfil(p.id, nome); location.reload(); } catch (e) { toast(e.message, "erro"); }
+          } }, "Renomear"),
+          perfis().length > 1 ? el("button", { class: "btn btn-perigo", onclick: () => {
+            if (!confirm(`Excluir o perfil "${p.nome}" e TODO o progresso dele? Exporte antes se quiser guardar.`)) return;
+            try { excluirPerfil(p.id); location.reload(); } catch (e) { toast(e.message, "erro"); }
+          } }, "Excluir") : null)))),
+    el("div", { class: "linha-controles", style: "margin-top:12px" }, nomeNovo, el("button", { class: "btn btn-primario", onclick: criar }, "+ Novo perfil")));
+}
+
 function baixar() {
   const blob = new Blob([exportar()], { type: "application/json" });
-  const a = el("a", { href: URL.createObjectURL(blob), download: `progresso-alemao-${hojeISO()}.json` });
+  const nome = perfilAtivo().nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase();
+  const a = el("a", { href: URL.createObjectURL(blob), download: `progresso-alemao-${nome}-${hojeISO()}.json` });
   document.body.append(a);
   a.click();
   a.remove();

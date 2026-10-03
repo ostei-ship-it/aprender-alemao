@@ -3,6 +3,7 @@ import { carregarDados } from "./dados.js";
 import { el } from "./ui.js";
 import { sinteseSuportada, vozesAlemas } from "./audio.js";
 import { iniciarPWA } from "./pwa.js";
+import { perfis, perfilAtivo, precisaEscolher, trocarPerfil, marcarEscolhido } from "./perfis.js";
 
 const ROTAS = [
   { id: "painel", rotulo: "Painel", icone: "📊", modulo: "./modos/painel.js" },
@@ -59,9 +60,33 @@ function avisosAudio() {
   }, 2500);
 }
 
+function mostrarPerfil() {
+  const chip = document.getElementById("perfil-chip");
+  chip.textContent = `👤 ${perfilAtivo().nome}`;
+  chip.title = perfis().length > 1 ? "Trocar de perfil" : "Perfis";
+}
+
+// Com mais de um perfil no aparelho, pergunta quem vai estudar ao abrir o app.
+function escolherPerfil() {
+  return new Promise((resolve) => {
+    main.replaceChildren(el("div", { class: "cartao escolher-perfil" },
+      el("h2", {}, "Quem vai estudar?"),
+      el("div", { class: "opcoes" }, perfis().map((p) =>
+        el("button", { class: `btn opcao ${p.id === perfilAtivo().id ? "certa" : ""}`, onclick: () => {
+          if (p.id === perfilAtivo().id) {
+            marcarEscolhido();
+            resolve();
+          } else trocarPerfil(p.id);
+        } }, `👤 ${p.nome}`))),
+      el("p", { class: "muted" }, "Cada perfil tem o seu próprio progresso. Para criar ou renomear perfis: Ajustes › Perfis.")));
+  });
+}
+
 async function iniciar() {
   iniciarPWA();
   montarNav();
+  mostrarPerfil();
+  if (precisaEscolher()) await escolherPerfil();
   try {
     await carregarDados();
   } catch (e) {

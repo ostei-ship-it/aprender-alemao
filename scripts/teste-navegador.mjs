@@ -79,6 +79,7 @@ await ctx.addInitScript(SIMULACAO);
 const page = await ctx.newPage();
 page.on("console", (m) => { if (m.type() === "error") erros.push(`console: ${m.text()}`); });
 page.on("pageerror", (e) => erros.push(`pageerror: ${e.message}`));
+page.on("dialog", (d) => d.accept());
 
 async function ir(rota) {
   const destino = `${URL_BASE}#/${rota}`;
@@ -127,6 +128,7 @@ try {
 
   console.log("Flashcards:");
   await page.evaluate(() => localStorage.clear());
+  await page.reload();
   await ir("flashcards");
   const status = await page.textContent(".flash-status");
   ok(/15 na fila/.test(status), `fila inicial respeita a meta diária de 15 (${status.trim()})`);
@@ -136,7 +138,7 @@ try {
   await page.click(".btn-bom");
   await page.keyboard.press(" ");
   await page.click(".btn-errei");
-  const salvo = await page.evaluate(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso")));
+  const salvo = await page.evaluate(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso:" + JSON.parse(localStorage.getItem("aprender-alemao:perfis")).ativo)));
   const cards = Object.values(salvo.cards);
   ok(cards.length === 2, "dois cards salvos no localStorage");
   ok(cards.every((c) => c.intervalo === 1), "SM-2: primeiro intervalo = 1 dia");

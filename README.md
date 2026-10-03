@@ -35,6 +35,14 @@ O app é um **PWA**: hospedado em qualquer endereço **https**, ele pode ser ins
 
 O que funciona sem internet: flashcards, quiz, ditado, diálogos (respondendo por toque), pronúncia, painel e backup. O áudio usa a voz alemã instalada no aparelho (no Android, baixe a voz alemã em *Configurações › Idioma › Saída de texto para voz* para ela funcionar offline). O **treino de fala precisa de internet**: o reconhecimento de voz do Chrome roda nos servidores do Google.
 
+### Perfis (várias pessoas, progresso individual)
+
+O progresso fica guardado **no navegador de cada aparelho**. Pessoas em celulares diferentes já têm progresso totalmente separado. Para várias pessoas no **mesmo** aparelho, use **Ajustes › Perfis**: cada perfil tem progresso, meta diária, níveis e ajustes próprios, e com mais de um perfil o app pergunta "Quem vai estudar?" ao abrir. O nome do perfil em uso aparece no topo; tocar nele leva aos perfis.
+
+- Exportar, importar e apagar valem só para o perfil em uso. O arquivo exportado leva o nome do perfil.
+- Perfis **não têm senha**: quem usa o aparelho pode abrir qualquer perfil. Para privacidade, cada pessoa deve usar o próprio aparelho (ou um perfil de usuário diferente do navegador).
+- O progresso da versão anterior (sem perfis) vira automaticamente o "Perfil 1", que pode ser renomeado.
+
 O progresso fica no aparelho (localStorage). Celular e computador **não sincronizam sozinhos**: use *Ajustes › Exportar/Importar* para levar o progresso de um para o outro, e exporte de vez em quando como backup.
 
 **Atualizações**: quando uma versão nova é publicada, o app mostra o aviso "Há uma versão nova — Atualizar". O progresso é mantido.
@@ -154,7 +162,8 @@ aprender-alemao/
 │   ├── app.js          rotas (#/painel, #/flashcards, …) e inicialização
 │   ├── dados.js        carregamento dos JSON e filtros por nível/tema
 │   ├── audio.js        SpeechSynthesis, SpeechRecognition e gravação
-│   ├── progresso.js    localStorage, estatísticas, exportar/importar
+│   ├── progresso.js    localStorage, estatísticas, exportar/importar (do perfil em uso)
+│   ├── perfis.js       perfis locais (várias pessoas no mesmo aparelho)
 │   ├── sm2.js          algoritmo SM-2 e datas
 │   ├── comparar.js     normalização, números por extenso, avaliação de fala/escrita
 │   ├── ui.js           helpers de interface (artigos coloridos, botões de áudio…)

@@ -44,7 +44,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   console.log("Nível A2:");
   await ir("painel");
   await page.click("text=Ativar A2 nos estudos");
-  await page.waitForFunction(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso")).config.niveis.includes("A2"));
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso:" + JSON.parse(localStorage.getItem("aprender-alemao:perfis")).ativo)).config.niveis.includes("A2"));
   ok(!(await page.$("text=Ativar A2 nos estudos")), "botão do Painel ativa o A2");
   await ir("vocabulario");
   await page.fill("input[type=search]", "abfahren");
@@ -74,8 +74,61 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   await page.waitForSelector("#conteudo h2");
   await page.setInputFiles("input[type=file]", caminho);
   await page.waitForEvent("load");
-  const restaurado = await page.evaluate(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso")));
+  const restaurado = await page.evaluate(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso:" + JSON.parse(localStorage.getItem("aprender-alemao:perfis")).ativo)));
   ok(Object.keys(restaurado.cards).length === Object.keys(exportado.cards).length && restaurado.config.metaDiaria === 20, "importa e restaura o progresso");
+}
+
+
+// Perfis: progresso individual por pessoa no mesmo aparelho.
+export async function testarPerfis({ page, ir, ok }) {
+  console.log("Perfis:");
+  const ler = (id) => page.evaluate((k) => JSON.parse(localStorage.getItem(k)), `aprender-alemao:progresso:${id}`);
+  await ir("ajustes");
+  const nomeP1 = (await page.textContent("#perfil-chip")).replace("👤", "").trim();
+  const cardsP1 = Object.keys((await ler("p1")).cards).length;
+  ok(cardsP1 >= 2, `perfil inicial "${nomeP1}" guarda o progresso feito até aqui (${cardsP1} cards)`);
+  await page.fill("#perfis input", "Ana");
+  await Promise.all([page.waitForEvent("load"), page.click("text=+ Novo perfil")]);
+  await page.waitForSelector("#conteudo h2");
+  ok((await page.textContent("#perfil-chip")).includes("Ana"), "novo perfil \"Ana\" criado e ativado");
+  await ir("painel");
+  ok(/(^|\D)0\/15(?!\d)/.test(await page.textContent("#conteudo .stats")), "Ana começa do zero (0/15 novas hoje, meta padrão)");
+  await ir("flashcards");
+  await page.keyboard.press(" ");
+  await page.click(".btn-facil");
+  const p2 = await ler("p2");
+  ok(Object.keys(p2.cards).length === 1, "flashcard de Ana fica no progresso de Ana");
+  ok(Object.keys((await ler("p1")).cards).length === cardsP1, `progresso de "${nomeP1}" não foi alterado`);
+
+  // Nova abertura do app (aba nova): pergunta quem vai estudar.
+  const aba = await page.context().newPage();
+  aba.on("dialog", (d) => d.accept());
+  await aba.goto(page.url().replace(/#.*$/, "#/painel"));
+  await aba.waitForSelector(".escolher-perfil");
+  const opcoes = await aba.$$eval(".escolher-perfil .opcao", (b) => b.map((x) => x.textContent));
+  ok(opcoes.length === 2, `ao abrir o app pergunta "Quem vai estudar?" (${opcoes.join(", ")})`);
+  await Promise.all([aba.waitForEvent("load"), aba.click(`.escolher-perfil .opcao:has-text("${nomeP1}")`)]);
+  await aba.waitForSelector("#conteudo .stats");
+  ok((await aba.textContent("#perfil-chip")).includes(nomeP1), `escolher "${nomeP1}" carrega o progresso dele`);
+  await aba.close();
+
+  // Excluir Ana remove só o progresso dela.
+  await page.reload();
+  await ir("ajustes");
+  await Promise.all([page.waitForEvent("load"), page.click('.perfil-item:has-text("Ana") .btn-perigo')]);
+  await page.waitForSelector("#perfis");
+  ok((await ler("p2")) === null && Object.keys((await ler("p1")).cards).length === cardsP1, "excluir Ana apaga só o progresso dela");
+
+  // Migração: progresso salvo antes de existirem perfis vira o "Perfil 1".
+  await page.evaluate(() => {
+    const antigo = localStorage.getItem("aprender-alemao:progresso:p1");
+    localStorage.clear();
+    localStorage.setItem("aprender-alemao:progresso", antigo);
+  });
+  await page.reload();
+  await page.waitForSelector("#conteudo h2");
+  const migrado = await page.evaluate(() => ({ antigo: localStorage.getItem("aprender-alemao:progresso"), novo: JSON.parse(localStorage.getItem("aprender-alemao:progresso:p1")) }));
+  ok(migrado.antigo === null && Object.keys(migrado.novo.cards).length === cardsP1, "progresso da versão anterior (sem perfis) é migrado sem perdas");
 }
 
 // PWA: instalável e funcionando sem internet (contexto separado, com service worker).

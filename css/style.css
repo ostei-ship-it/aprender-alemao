@@ -106,6 +106,21 @@ kbd {
 .marca { font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; }
 .bandeira { width: 22px; height: 14px; border-radius: 2px; background: linear-gradient(#000 33.3%, #dd0000 33.3% 66.6%, #ffce00 66.6%); }
 .nivel-tag { font-size: 0.85rem; }
+.perfil-chip {
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lista-perfis { display: flex; flex-direction: column; gap: 8px; }
+.perfil-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--borda); border-radius: 10px; }
+.perfil-item.ativo { border-color: var(--ok); }
+.escolher-perfil { max-width: 420px; margin: 24px auto; text-align: center; display: flex; flex-direction: column; gap: 12px; }
 .nav {
   display: flex;
   gap: 4px;

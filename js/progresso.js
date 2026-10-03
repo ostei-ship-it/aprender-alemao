@@ -1,7 +1,9 @@
 // Progresso do aluno, persistido em localStorage, com exportação/importação em JSON.
 import { aplicarSM2, cardNovo, hojeISO, somarDias } from "./sm2.js";
+import { perfilAtivo, chaveProgresso } from "./perfis.js";
 
-const CHAVE = "aprender-alemao:progresso";
+// Cada perfil tem seu próprio progresso (ver perfis.js).
+const CHAVE = chaveProgresso(perfilAtivo().id);
 const VERSAO = 1;
 
 export const CONFIG_PADRAO = {
@@ -139,13 +141,14 @@ export function registrarDialogo(id, acertos, total) {
 }
 
 export function exportar() {
-  return JSON.stringify({ app: "aprender-alemao", exportadoEm: new Date().toISOString(), ...estado }, null, 2);
+  return JSON.stringify({ app: "aprender-alemao", perfil: perfilAtivo().nome, exportadoEm: new Date().toISOString(), ...estado }, null, 2);
 }
 
 export function importar(texto) {
   const obj = JSON.parse(texto);
   if (obj.app && obj.app !== "aprender-alemao") throw new Error("Este arquivo não é um progresso deste app.");
   delete obj.app;
+  delete obj.perfil;
   delete obj.exportadoEm;
   estado = normalizar(obj);
   salvar();
