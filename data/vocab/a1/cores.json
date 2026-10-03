@@ -2,18 +2,18 @@
   "tema": "cores",
   "nivel": "A1",
   "palavras": [
-    {"id":"cores-farbe","alemao":"Farbe","classe":"substantivo","artigo":"die","plural":"Farben","pronuncia_pt":"FAA-be","portugues":"cor","exemplo":"Welche Farbe hat dein Auto?","exemplo_pt":"De que cor é o seu carro?","tema":"cores","nivel":"A1"},
-    {"id":"cores-rot","alemao":"rot","classe":"adjetivo","pronuncia_pt":"RRÔT","portugues":"vermelho","exemplo":"Die Tomate ist rot.","exemplo_pt":"O tomate é vermelho.","tema":"cores","nivel":"A1"},
-    {"id":"cores-blau","alemao":"blau","classe":"adjetivo","pronuncia_pt":"BLAU","portugues":"azul","exemplo":"Der Himmel ist blau.","exemplo_pt":"O céu é azul.","tema":"cores","nivel":"A1"},
-    {"id":"cores-gruen","alemao":"grün","classe":"adjetivo","pronuncia_pt":"GRRÜN","portugues":"verde","exemplo":"Das Gras ist grün.","exemplo_pt":"A grama é verde.","tema":"cores","nivel":"A1"},
-    {"id":"cores-gelb","alemao":"gelb","classe":"adjetivo","pronuncia_pt":"GUÉLP","portugues":"amarelo","exemplo":"Die Sonne ist gelb.","exemplo_pt":"O sol é amarelo.","tema":"cores","nivel":"A1"},
-    {"id":"cores-schwarz","alemao":"schwarz","classe":"adjetivo","pronuncia_pt":"XVAATS","portugues":"preto","exemplo":"Ich trinke den Kaffee schwarz.","exemplo_pt":"Eu tomo o café preto (sem leite).","tema":"cores","nivel":"A1"},
-    {"id":"cores-weiss","alemao":"weiß","classe":"adjetivo","pronuncia_pt":"VAIS","portugues":"branco","exemplo":"Der Schnee ist weiß.","exemplo_pt":"A neve é branca.","tema":"cores","nivel":"A1"},
+    {"id":"cores-farbe","alemao":"Farbe","classe":"substantivo","artigo":"die","plural":"Farben","pronuncia_pt":"FAA-be","portugues":"cor","imagem":"🎨","exemplo":"Welche Farbe hat dein Auto?","exemplo_pt":"De que cor é o seu carro?","tema":"cores","nivel":"A1"},
+    {"id":"cores-rot","alemao":"rot","classe":"adjetivo","pronuncia_pt":"RRÔT","portugues":"vermelho","imagem":"🔴","exemplo":"Die Tomate ist rot.","exemplo_pt":"O tomate é vermelho.","tema":"cores","nivel":"A1"},
+    {"id":"cores-blau","alemao":"blau","classe":"adjetivo","pronuncia_pt":"BLAU","portugues":"azul","imagem":"🔵","exemplo":"Der Himmel ist blau.","exemplo_pt":"O céu é azul.","tema":"cores","nivel":"A1"},
+    {"id":"cores-gruen","alemao":"grün","classe":"adjetivo","pronuncia_pt":"GRRÜN","portugues":"verde","imagem":"🟢","exemplo":"Das Gras ist grün.","exemplo_pt":"A grama é verde.","tema":"cores","nivel":"A1"},
+    {"id":"cores-gelb","alemao":"gelb","classe":"adjetivo","pronuncia_pt":"GUÉLP","portugues":"amarelo","imagem":"🟡","exemplo":"Die Sonne ist gelb.","exemplo_pt":"O sol é amarelo.","tema":"cores","nivel":"A1"},
+    {"id":"cores-schwarz","alemao":"schwarz","classe":"adjetivo","pronuncia_pt":"XVAATS","portugues":"preto","imagem":"⚫","exemplo":"Ich trinke den Kaffee schwarz.","exemplo_pt":"Eu tomo o café preto (sem leite).","tema":"cores","nivel":"A1"},
+    {"id":"cores-weiss","alemao":"weiß","classe":"adjetivo","pronuncia_pt":"VAIS","portugues":"branco","imagem":"⚪","exemplo":"Der Schnee ist weiß.","exemplo_pt":"A neve é branca.","tema":"cores","nivel":"A1"},
     {"id":"cores-grau","alemao":"grau","classe":"adjetivo","pronuncia_pt":"GRRAU","portugues":"cinza","exemplo":"Die Katze ist grau.","exemplo_pt":"O gato é cinza.","tema":"cores","nivel":"A1"},
-    {"id":"cores-braun","alemao":"braun","classe":"adjetivo","pronuncia_pt":"BRRAUN","portugues":"marrom","exemplo":"Der Tisch ist braun.","exemplo_pt":"A mesa é marrom.","tema":"cores","nivel":"A1"},
-    {"id":"cores-orange","alemao":"orange","classe":"adjetivo","pronuncia_pt":"o-RRAN-je","portugues":"laranja (cor)","exemplo":"Die Jacke ist orange.","exemplo_pt":"A jaqueta é laranja.","tema":"cores","nivel":"A1"},
-    {"id":"cores-rosa","alemao":"rosa","classe":"adjetivo","pronuncia_pt":"RRÔ-za","portugues":"rosa","exemplo":"Das Zimmer meiner Tochter ist rosa.","exemplo_pt":"O quarto da minha filha é rosa.","tema":"cores","nivel":"A1"},
-    {"id":"cores-lila","alemao":"lila","classe":"adjetivo","pronuncia_pt":"LI-la","portugues":"roxo / lilás","exemplo":"Die Blume ist lila.","exemplo_pt":"A flor é lilás.","tema":"cores","nivel":"A1"},
-    {"id":"cores-bunt","alemao":"bunt","classe":"adjetivo","pronuncia_pt":"BUNT","portugues":"colorido","exemplo":"Die Blumen sind bunt.","exemplo_pt":"As flores são coloridas.","tema":"cores","nivel":"A1"}
+    {"id":"cores-braun","alemao":"braun","classe":"adjetivo","pronuncia_pt":"BRRAUN","portugues":"marrom","imagem":"🟤","exemplo":"Der Tisch ist braun.","exemplo_pt":"A mesa é marrom.","tema":"cores","nivel":"A1"},
+    {"id":"cores-orange","alemao":"orange","classe":"adjetivo","pronuncia_pt":"o-RRAN-je","portugues":"laranja (cor)","imagem":"🟠","exemplo":"Die Jacke ist orange.","exemplo_pt":"A jaqueta é laranja.","tema":"cores","nivel":"A1"},
+    {"id":"cores-rosa","alemao":"rosa","classe":"adjetivo","pronuncia_pt":"RRÔ-za","portugues":"rosa","imagem":"🩷","exemplo":"Das Zimmer meiner Tochter ist rosa.","exemplo_pt":"O quarto da minha filha é rosa.","tema":"cores","nivel":"A1"},
+    {"id":"cores-lila","alemao":"lila","classe":"adjetivo","pronuncia_pt":"LI-la","portugues":"roxo / lilás","imagem":"🟣","exemplo":"Die Blume ist lila.","exemplo_pt":"A flor é lilás.","tema":"cores","nivel":"A1"},
+    {"id":"cores-bunt","alemao":"bunt","classe":"adjetivo","pronuncia_pt":"BUNT","portugues":"colorido","imagem":"🌈","exemplo":"Die Blumen sind bunt.","exemplo_pt":"As flores são coloridas.","tema":"cores","nivel":"A1"}
   ]
 }

@@ -60,6 +60,10 @@ export function textoSoaComo(p) {
   if (p.classe !== "substantivo") return p.pronuncia_pt;
   return `${ARTIGO_PT[p.so_plural ? "die" : p.artigo]} ${p.pronuncia_pt}`;
 }
+export function imagemDe(p) {
+  return p.imagem ? el("span", { class: "op-img", "aria-hidden": "true" }, p.imagem) : null;
+}
+
 export function soaComo(p, { forcar = false } = {}) {
   const t = textoSoaComo(p);
   if (!t || (!forcar && config().mostrarPronuncia === false)) return null;

@@ -1,5 +1,5 @@
 // Lista navegável do vocabulário, com busca e filtro por tema.
-import { el, palavraDE, pluralDE, perfektDE, soaComo, botoesAudio, badgeRevisar, seletorTema } from "../ui.js";
+import { el, imagemDe, palavraDE, pluralDE, perfektDE, soaComo, botoesAudio, badgeRevisar, seletorTema } from "../ui.js";
 import { dados, formaCompleta } from "../dados.js";
 import { cardDe, ehAprendida } from "../progresso.js";
 
@@ -42,7 +42,7 @@ export function render(raiz) {
     const estado = ehAprendida(p.id) ? "aprendida" : cardDe(p.id) ? "estudando" : "";
     return el("details", { class: "vocab-item" },
       el("summary", {},
-        palavraDE(p), botoesAudio(formaCompleta(p)),
+        imagemDe(p), palavraDE(p), botoesAudio(formaCompleta(p)),
         el("span", { class: "vocab-pt" }, p.portugues),
         estado ? el("span", { class: `etiqueta et-${estado}` }, estado) : null,
         badgeRevisar(p)),

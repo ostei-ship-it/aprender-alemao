@@ -7,7 +7,8 @@ import { perfis, perfilAtivo, precisaEscolher, trocarPerfil, marcarEscolhido } f
 
 const ROTAS = [
   { id: "painel", rotulo: "Painel", icone: "📊", modulo: "./modos/painel.js" },
-  { id: "flashcards", rotulo: "Flashcards", icone: "🃏", modulo: "./modos/flashcards.js" },
+  { id: "licoes", rotulo: "Lições", icone: "🎓", modulo: "./modos/licao.js" },
+  { id: "flashcards", rotulo: "Revisar", icone: "🃏", modulo: "./modos/flashcards.js" },
   { id: "quiz", rotulo: "Quiz", icone: "❓", modulo: "./modos/quiz.js" },
   { id: "ouvir", rotulo: "Ouvir e escrever", icone: "🎧", modulo: "./modos/ouvir.js" },
   { id: "fala", rotulo: "Falar", icone: "🎤", modulo: "./modos/fala.js" },

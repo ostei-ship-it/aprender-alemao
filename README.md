@@ -4,7 +4,9 @@ App web local para aprender alemão com foco em **vocabulário e fala**. HTML, C
 
 - **Trilha para iniciantes**: 14 lições curtas (6 palavras simples cada, com uma dica em português), de *Hallo/Danke/Ja/Nein* até as primeiras frases prontas. As palavras novas seguem essa ordem; depois da trilha, entram das mais curtas/simples para as mais longas. Lições em `data/trilha.json`.
 - **"Soa como"**: cada palavra do A1 mostra como soa lida em português (ex.: *rechts* → **RRÉRHTS**), com legenda e treinos passo a passo na seção Pronúncia (ex.: *ich → echt → Recht → rechts*). Pode ser desligado em Ajustes.
-- **Flashcards** com repetição espaçada (SM-2): botões *errei / difícil / bom / fácil*, fila diária de revisões + palavras novas até a meta diária.
+- **Lições (aprender e fixar)**: cada palavra nova é apresentada com figura, som e "soa como", e depois reaparece 4–6 vezes em exercícios variados — escolher o significado (com figuras), ouvir e escolher, traduzir para o alemão, ligar pares, digitar e falar. Errou? A palavra volta no fim da lição até acertar. Ao concluir, as palavras entram nas revisões espaçadas. Lições da trilha ou "Próximas palavras" (automática, 6 por vez).
+- **Figuras**: emojis (funcionam offline, sem licença) em 273 palavras do A1 com figura que representa bem a palavra — campo `imagem`. Palavras abstratas ficam sem figura de propósito.
+- **Revisar (flashcards)** com repetição espaçada (SM-2): botões *errei / difícil / bom / fácil*, fila diária de revisões + palavras novas até a meta diária.
 - **Quiz**: múltipla escolha alemão→português e português→alemão, digitar em alemão (confere o artigo separadamente) e quiz de artigos *der/die/das*.
 - **Ouvir e escrever**: o app fala uma palavra ou frase e você digita.
 - **Treino de fala**: você fala, o reconhecimento de voz (`de-DE`) transcreve e o app compara com o texto esperado (acerto / parcial / erro), mostrando o que foi reconhecido e quais palavras faltaram.
@@ -110,6 +112,7 @@ Cada palavra é um objeto:
 | `plural` | Só para substantivos, sem o artigo (`"Äpfel"`). Use `null` se a palavra normalmente não tem plural. |
 | `so_plural` | `true` para palavras que só existem no plural (`die Eltern`); use `"artigo": "die"`. |
 | `exemplo` | Frase curta em alemão padrão, com pontuação final. |
+| `imagem` | Opcional: emoji (ou número) que representa a palavra, usado nas lições, flashcards e lista. Só use quando a figura for inequívoca. |
 | `pronuncia_pt` | Como soa lido em português, sem o artigo (o app acrescenta *dêa/di/das*). Sílaba forte em MAIÚSCULAS; convenções na legenda de `data/pronuncia.json` (rr = garganta, rh = chiado do *ich*, x = sch, ts = z…). Obrigatório no A1. |
 | `perfekt` | Só para verbos: auxiliar + particípio (`"hat gegessen"`, `"ist gefahren"`). Obrigatório a partir do A2; aparece no verso do flashcard e na lista. |
 | `revisar` / `nota_revisao` | Marque `"revisar": true` e explique a dúvida. O item aparece com ⚑ no app e é listado pelo validador. |

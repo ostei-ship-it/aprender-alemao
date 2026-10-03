@@ -1,9 +1,9 @@
 // Flashcards com repetição espaçada (SM-2) e fila diária.
-import { el, palavraDE, pluralDE, perfektDE, soaComo, botoesAudio, badgeRevisar, seletorTema, toast } from "../ui.js";
+import { el, palavraDE, pluralDE, perfektDE, soaComo, imagemDe, botoesAudio, badgeRevisar, seletorTema, toast } from "../ui.js";
 import { dados, palavrasAtivas, formaCompleta, ordenarParaEstudo, licaoDe } from "../dados.js";
 import { falar } from "../audio.js";
 import { BOTOES, descreverIntervalo } from "../sm2.js";
-import { config, devidas, novasDisponiveis, avaliarFlashcard, previaIntervalo, cardDe, novasHoje, registrarResposta } from "../progresso.js";
+import { config, devidas, avaliarFlashcard, previaIntervalo, cardDe, novasHoje, registrarResposta } from "../progresso.js";
 
 export function render(raiz) {
   let tema = "";
@@ -20,8 +20,8 @@ export function render(raiz) {
 
   raiz.append(
     el("div", { class: "cabecalho-modo" },
-      el("h2", {}, "Flashcards"),
-      el("p", { class: "muted" }, "Revisões do dia + palavras novas até a sua meta diária. O intervalo até a próxima revisão segue o algoritmo SM-2."),
+      el("h2", {}, "Revisar"),
+      el("p", { class: "muted" }, "Flashcards das palavras que você já aprendeu nas Lições, no dia certo de revisar (repetição espaçada, algoritmo SM-2)."),
       el("div", { class: "linha-controles" },
         seletorTema(temas, tema, (v) => { tema = v; montarFila(); })),
     ),
@@ -36,8 +36,8 @@ export function render(raiz) {
   function montarFila() {
     const lista = ordenarParaEstudo(base());
     const revisoes = devidas(lista);
-    let novas = novasDisponiveis(lista);
-    if (extras) novas = lista.filter((p) => !cardDe(p.id)).slice(0, novas.length + extras);
+    // Palavras novas entram pelas Lições (com fixação). Aqui só se a pessoa pedir explicitamente.
+    const novas = extras ? lista.filter((p) => !cardDe(p.id)).slice(0, extras) : [];
     // Palavras novas na ordem da trilha (das mais simples para as mais difíceis), depois das revisões.
     fila = [...revisoes, ...novas];
     feitos = 0;
@@ -90,14 +90,14 @@ export function render(raiz) {
     );
     const frente = atual._dir === "de-pt"
       ? el("div", { class: "flash-frente" }, palavraDE(atual, { tamanho: "grande" }), soaComo(atual), botoesAudio(formaCompleta(atual)))
-      : el("div", { class: "flash-frente" }, el("span", { class: "palavra-pt grande" }, atual.portugues),
+      : el("div", { class: "flash-frente" }, imagemDe(atual), el("span", { class: "palavra-pt grande" }, atual.portugues),
           el("p", { class: "muted" }, atual.classe === "substantivo" ? "Lembre-se do artigo (der/die/das)!" : `(${atual.classe})`));
     const cartao = el("div", { class: `flash-card ${virado ? "virado" : ""}`, onclick: () => !virado && virar() }, frente);
     if (virado) {
       cartao.append(
         el("hr"),
         atual._dir === "de-pt"
-          ? el("div", { class: "palavra-pt" }, atual.portugues)
+          ? el("div", { class: "palavra-pt" }, imagemDe(atual), " ", atual.portugues)
           : el("div", { class: "flash-frente" }, palavraDE(atual, { tamanho: "grande" }), soaComo(atual), botoesAudio(formaCompleta(atual))),
         el("div", { class: "flash-detalhes" },
           pluralDE(atual),
@@ -149,13 +149,13 @@ export function render(raiz) {
     const meta = config().metaDiaria;
     corpo.append(
       el("div", { class: "cartao-fim" },
-        el("h3", {}, feitos ? "Sessão concluída! 🎉" : "Nada para revisar agora"),
+        el("h3", {}, feitos ? "Revisão concluída! 🎉" : "Nada para revisar agora"),
         feitos ? el("p", {}, `Você fez ${feitos} cartões: ${placar.facil} fácil, ${placar.bom} bom, ${placar.dificil} difícil, ${placar.errei} errei.`) : null,
-        el("p", { class: "muted" }, `Palavras novas hoje: ${novasHoje()} de ${meta} (meta diária). ${restamNovas} palavras ainda não vistas ${tema ? "neste tema" : "nos temas ativos"}.`),
+        el("p", { class: "muted" }, `Palavras novas hoje: ${novasHoje()} de ${meta} (meta diária). Para aprender palavras novas, use as Lições: elas apresentam cada palavra e repetem até fixar.`),
+        el("a", { class: "btn btn-primario", href: "#/licoes" }, "🎓 Ir para as Lições"),
         restamNovas
-          ? el("button", { class: "btn", onclick: () => { extras += 5; montarFila(); if (!atual) toast("Não há mais palavras novas neste filtro."); } }, "Aprender mais 5 palavras novas")
+          ? el("button", { class: "btn btn-secundario", onclick: () => { extras += 5; montarFila(); if (!atual) toast("Não há mais palavras novas neste filtro."); } }, "Ver 5 palavras novas aqui mesmo (sem lição)")
           : null,
-        el("a", { class: "btn btn-secundario", href: "#/quiz" }, "Fazer um quiz"),
       ),
     );
   }

@@ -3,6 +3,7 @@ import { el, porcentagem, toast } from "../ui.js";
 import { dados, palavrasAtivas } from "../dados.js";
 import { progresso, config, atualizarConfig, devidas, ehAprendida, novasHoje, sequenciaDias, totalDiasEstudados } from "../progresso.js";
 import { hojeISO, somarDias } from "../sm2.js";
+import { proximaLicao } from "./licao.js";
 
 export function render(raiz) {
   const est = progresso();
@@ -37,7 +38,9 @@ export function render(raiz) {
         ? `Hoje: ${revisarHoje.length} revisão(ões) e ${Math.max(0, meta - novas)} palavra(s) nova(s) para atingir a meta.`
         : "Meta de hoje cumprida! 🎉 Continue com quiz, fala ou diálogos."),
       cartaoTrilha(),
-      el("a", { class: "btn btn-primario", href: "#/flashcards" }, "Estudar agora")),
+      el("div", { class: "grupo-botoes" },
+        (() => { const l = proximaLicao(); return l ? el("a", { class: "btn btn-primario", href: `#/licoes?id=${l.id}` }, `🎓 Próxima lição: ${l.titulo}`) : null; })(),
+        el("a", { class: `btn ${revisarHoje.length ? "btn-primario" : ""}`, href: "#/flashcards" }, revisarHoje.length ? `🃏 Revisar (${revisarHoje.length})` : "🃏 Revisar"))),
 
     el("div", { class: "stats" },
       stat(aprendidas.length, "palavras aprendidas", el("small", { class: "muted" }, "≥ 2 revisões seguidas certas")),
