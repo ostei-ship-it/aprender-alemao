@@ -1,5 +1,5 @@
 // Treino de fala: o aluno fala, o reconhecedor (de-DE) transcreve e o app compara.
-import { el, feedback, seletorTema, palavraDE, botoesAudio, toast } from "../ui.js";
+import { el, feedback, avisoSemEstudadas, seletorTema, palavraDE, soaComo, botoesAudio, toast } from "../ui.js";
 import { dados, palavrasAtivas, embaralhar, formaCompleta } from "../dados.js";
 import { falar, ouvirFala, pararEscuta, reconhecimentoSuportado, gravacaoSuportada, iniciarGravacao } from "../audio.js";
 import { config, registrarResposta, cardDe } from "../progresso.js";
@@ -9,7 +9,7 @@ import { textoMarcado } from "./ouvir.js";
 const TITULOS = { acerto: "Muito bem! Pronúncia reconhecida.", parcial: "Quase! Parte da fala foi reconhecida.", erro: "Não reconheci o texto esperado." };
 
 export function render(raiz) {
-  const opcoes = { conteudo: "frases", tema: "", soEstudadas: false };
+  const opcoes = { conteudo: "palavras", tema: "", soEstudadas: true };
   const corpo = el("div");
   const suportado = reconhecimentoSuportado();
 
@@ -43,7 +43,10 @@ export function render(raiz) {
     let lista = palavrasAtivas();
     if (opcoes.tema) lista = lista.filter((p) => p.tema === opcoes.tema);
     if (opcoes.soEstudadas) lista = lista.filter((p) => cardDe(p.id));
-    if (!lista.length) return corpo.prepend(feedback("parcial", "Nenhuma palavra com esses filtros."));
+    if (!lista.length) {
+      if (opcoes.soEstudadas) return corpo.prepend(avisoSemEstudadas(() => { opcoes.soEstudadas = false; iniciar(); }));
+      return corpo.prepend(feedback("parcial", "Nenhuma palavra com esses filtros."));
+    }
     rodar(embaralhar(lista).slice(0, 10));
   }
 
@@ -67,6 +70,7 @@ export function render(raiz) {
 
       const alvo = el("div", { class: "quiz-pergunta" },
         frase ? el("div", { class: "palavra-de grande", lang: "de" }, texto) : palavraDE(p, { tamanho: "grande" }),
+        frase ? null : el("div", {}, soaComo(p)),
         el("p", { class: "muted" }, frase ? p.exemplo_pt : p.portugues),
         el("div", { class: "grupo-botoes", style: "justify-content:center" },
           el("button", { class: "btn", onclick: () => falar(texto) }, "🔊 Ouvir modelo"),

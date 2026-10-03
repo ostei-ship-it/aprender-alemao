@@ -3,6 +3,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   console.log("Ouvir e escrever:");
   await ir("ouvir");
   await page.click("text=Frases de exemplo");
+  await page.uncheck("text=Só palavras que já estudei");
   await limparFalas();
   await page.click("text=Começar");
   await page.waitForSelector(".quiz-card input");
@@ -19,6 +20,8 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
 
   console.log("Treino de fala:");
   await ir("fala");
+  await page.click("text=Frases de exemplo");
+  await page.uncheck("text=Só palavras que já estudei");
   await page.click("text=Começar");
   await page.waitForSelector(".btn-mic");
   const esperado = await page.textContent(".quiz-pergunta .palavra-de");
@@ -48,6 +51,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   await p2.goto(page.url().replace(/#.*$/, "#/fala"));
   await p2.waitForSelector("#conteudo h2");
   ok(/não suporta reconhecimento/.test(await p2.textContent("#conteudo")), "sem suporte: mostra aviso");
+  await p2.uncheck("text=Só palavras que já estudei");
   await p2.click("text=Começar");
   await p2.waitForSelector(".quiz-card");
   ok(/Grave|repita/.test(await p2.textContent(".quiz-card")), "sem suporte: oferece alternativa (gravar/repetir e autoavaliar)");

@@ -1,5 +1,6 @@
 // Utilitários de interface.
 import { falar, sinteseSuportada } from "./audio.js";
+import { config } from "./progresso.js";
 
 // el("div", {class: "x", onclick: fn}, filho1, "texto", ...)
 export function el(tag, attrs = {}, ...filhos) {
@@ -52,6 +53,20 @@ export function botoesAudio(texto, { rotulo = "" } = {}) {
   );
 }
 
+// Como a palavra soa, lida em português (ex.: rechts → RRÉRHTS). Substantivos levam o artigo.
+const ARTIGO_PT = { der: "dêa", die: "di", das: "das" };
+export function textoSoaComo(p) {
+  if (!p.pronuncia_pt) return null;
+  if (p.classe !== "substantivo") return p.pronuncia_pt;
+  return `${ARTIGO_PT[p.so_plural ? "die" : p.artigo]} ${p.pronuncia_pt}`;
+}
+export function soaComo(p, { forcar = false } = {}) {
+  const t = textoSoaComo(p);
+  if (!t || (!forcar && config().mostrarPronuncia === false)) return null;
+  return el("span", { class: "soa-como", title: "Como soa, lido em português. Sílaba em MAIÚSCULAS = forte. Legenda em Pronúncia." },
+    el("span", { class: "muted" }, "soa: "), t);
+}
+
 // Perfekt (passado composto) dos verbos que têm o campo, ex.: "ist abgefahren".
 export function perfektDE(p) {
   if (!p.perfekt) return null;
@@ -79,6 +94,15 @@ export function toast(msg, tipo = "") {
 export function feedback(nivel, titulo, ...detalhes) {
   const icone = { acerto: "✓", parcial: "≈", erro: "✗" }[nivel] || "";
   return el("div", { class: `feedback fb-${nivel}`, role: "status" }, el("strong", {}, `${icone} ${titulo}`), ...detalhes);
+}
+
+// Exercícios usam, por padrão, só palavras já vistas nos flashcards (para não assustar no começo).
+export function avisoSemEstudadas(usarTodas) {
+  return feedback("parcial", "Você ainda não estudou palavras suficientes para este exercício.",
+    el("span", {}, "Comece pelos flashcards: as palavras aparecem aos poucos, das mais simples para as mais difíceis."),
+    el("span", { class: "grupo-botoes" },
+      el("a", { class: "btn btn-primario", href: "#/flashcards" }, "Ir para os flashcards"),
+      el("button", { class: "btn btn-secundario", onclick: usarTodas }, "Usar todas as palavras mesmo assim")));
 }
 
 export function porcentagem(a, total) {

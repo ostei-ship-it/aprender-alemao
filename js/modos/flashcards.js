@@ -1,6 +1,6 @@
 // Flashcards com repetição espaçada (SM-2) e fila diária.
-import { el, palavraDE, pluralDE, perfektDE, botoesAudio, badgeRevisar, seletorTema, toast } from "../ui.js";
-import { dados, palavrasAtivas, formaCompleta, embaralhar } from "../dados.js";
+import { el, palavraDE, pluralDE, perfektDE, soaComo, botoesAudio, badgeRevisar, seletorTema, toast } from "../ui.js";
+import { dados, palavrasAtivas, formaCompleta, ordenarParaEstudo, licaoDe } from "../dados.js";
 import { falar } from "../audio.js";
 import { BOTOES, descreverIntervalo } from "../sm2.js";
 import { config, devidas, novasDisponiveis, avaliarFlashcard, previaIntervalo, cardDe, novasHoje, registrarResposta } from "../progresso.js";
@@ -34,11 +34,12 @@ export function render(raiz) {
   }
 
   function montarFila() {
-    const lista = base();
+    const lista = ordenarParaEstudo(base());
     const revisoes = devidas(lista);
     let novas = novasDisponiveis(lista);
     if (extras) novas = lista.filter((p) => !cardDe(p.id)).slice(0, novas.length + extras);
-    fila = [...revisoes, ...embaralhar(novas)];
+    // Palavras novas na ordem da trilha (das mais simples para as mais difíceis), depois das revisões.
+    fila = [...revisoes, ...novas];
     feitos = 0;
     repetidos.clear();
     proximo();
@@ -49,12 +50,32 @@ export function render(raiz) {
     return d === "misto" ? (Math.random() < 0.5 ? "de-pt" : "pt-de") : d;
   }
 
+  const licoesApresentadas = new Set();
+
   function proximo() {
     atual = fila.shift() || null;
     virado = false;
     if (atual) atual = { ...atual, _dir: direcao() };
+    // Antes da 1ª palavra nova de uma lição da trilha, mostra o título e a dica da lição.
+    const licao = atual && !cardDe(atual.id) ? licaoDe(atual.id) : null;
+    if (licao && !licoesApresentadas.has(licao.id) && !licao.palavras.some((id) => cardDe(id))) {
+      licoesApresentadas.add(licao.id);
+      return apresentarLicao(licao);
+    }
     desenhar();
     if (atual && atual._dir === "de-pt" && config().autoAudio) falar(formaCompleta(atual));
+  }
+
+  let emIntro = null; // botão "Começar a lição" enquanto a apresentação está na tela
+
+  function apresentarLicao(licao) {
+    const n = dados().licoes.indexOf(licao) + 1;
+    corpo.replaceChildren(el("div", { class: "cartao licao-intro" },
+      el("span", { class: "etiqueta et-nova" }, `Lição ${n} de ${dados().licoes.length}`),
+      el("h3", {}, licao.titulo),
+      el("p", {}, licao.dica),
+      el("p", { class: "muted" }, `${licao.palavras.length} palavras nesta lição.`),
+      emIntro = el("button", { class: "btn btn-primario largo", onclick: () => { emIntro = null; desenhar(); if (atual._dir === "de-pt" && config().autoAudio) falar(formaCompleta(atual)); } }, "Começar a lição")));
   }
 
   function desenhar() {
@@ -68,7 +89,7 @@ export function render(raiz) {
         el("span", { class: "muted" }, `${restantes} na fila · ${feitos} feitas`)),
     );
     const frente = atual._dir === "de-pt"
-      ? el("div", { class: "flash-frente" }, palavraDE(atual, { tamanho: "grande" }), botoesAudio(formaCompleta(atual)))
+      ? el("div", { class: "flash-frente" }, palavraDE(atual, { tamanho: "grande" }), soaComo(atual), botoesAudio(formaCompleta(atual)))
       : el("div", { class: "flash-frente" }, el("span", { class: "palavra-pt grande" }, atual.portugues),
           el("p", { class: "muted" }, atual.classe === "substantivo" ? "Lembre-se do artigo (der/die/das)!" : `(${atual.classe})`));
     const cartao = el("div", { class: `flash-card ${virado ? "virado" : ""}`, onclick: () => !virado && virar() }, frente);
@@ -77,7 +98,7 @@ export function render(raiz) {
         el("hr"),
         atual._dir === "de-pt"
           ? el("div", { class: "palavra-pt" }, atual.portugues)
-          : el("div", {}, palavraDE(atual, { tamanho: "grande" }), botoesAudio(formaCompleta(atual))),
+          : el("div", { class: "flash-frente" }, palavraDE(atual, { tamanho: "grande" }), soaComo(atual), botoesAudio(formaCompleta(atual))),
         el("div", { class: "flash-detalhes" },
           pluralDE(atual),
           perfektDE(atual),
@@ -142,6 +163,10 @@ export function render(raiz) {
   function tecla(e) {
     if (e.target.matches("input, textarea, select")) return;
     if (!atual) return;
+    if (emIntro) {
+      if (e.key === " " || e.key === "Enter") { e.preventDefault(); emIntro.click(); }
+      return;
+    }
     if (!virado && (e.key === " " || e.key === "Enter")) {
       e.preventDefault();
       virar();

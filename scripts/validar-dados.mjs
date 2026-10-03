@@ -50,6 +50,8 @@ if (index) {
       } else if (p.artigo) {
         erros.push(`${onde}: só substantivos têm artigo`);
       }
+      if (p.nivel === "A1" && (typeof p.pronuncia_pt !== "string" || !p.pronuncia_pt.trim())) erros.push(`${onde}: falta "pronuncia_pt" (como soa em português)`);
+      if (p.pronuncia_pt && !/[A-ZÁÉÍÓÚÂÊÔÃÜÖ]/.test(p.pronuncia_pt)) erros.push(`${onde}: "pronuncia_pt" sem sílaba forte em MAIÚSCULAS`);
       if ("perfekt" in p && (p.classe !== "verbo" || !/^(hat|ist) \S/.test(p.perfekt))) erros.push(`${onde}: "perfekt" só para verbos, no formato "hat …" ou "ist …"`);
       if (p.nivel !== "A1" && p.classe === "verbo" && !p.perfekt) erros.push(`${onde}: verbo a partir do A2 precisa do campo "perfekt"`);
       if (!/[.!?“"]$/.test(p.exemplo.trim())) erros.push(`${onde}: exemplo sem pontuação final`);
@@ -91,7 +93,28 @@ if (pron) {
     if (!s.id || !s.titulo || !s.explicacao || !s.exemplos?.length) erros.push(`pronuncia › ${s.id}: campos ausentes`);
     for (const e of s.exemplos || []) if (!e.de || !e.pt) erros.push(`pronuncia › ${s.id}: exemplo sem de/pt`);
     if (s.revisar) revisar.push(`pronuncia › ${s.id}: ${s.nota_revisao || "(sem nota)"}`);
+    for (const e of s.exemplos || []) if (!e.soa) erros.push(`pronuncia › ${s.id} › ${e.de}: falta "soa"`);
   }
+  if (!pron.legenda?.itens?.length) erros.push("pronuncia: falta a legenda");
+  for (const t of pron.passo_a_passo || []) {
+    if (!t.id || !t.titulo || !t.soa || !t.passos?.length) erros.push(`pronuncia › passo_a_passo › ${t.id}: campos ausentes`);
+    for (const p of t.passos || []) if (!p.de || !p.soa || !p.pt) erros.push(`pronuncia › passo_a_passo › ${t.id}: passo sem de/soa/pt`);
+  }
+}
+
+// --- trilha de iniciantes ---
+const trilha = ler("data/trilha.json");
+if (trilha) {
+  const vistos = new Set();
+  for (const l of trilha.licoes) {
+    if (!l.id || !l.titulo || !l.dica || !l.palavras?.length) erros.push(`trilha › ${l.id}: campos ausentes`);
+    for (const id of l.palavras || []) {
+      if (!ids.has(id)) erros.push(`trilha › ${l.id}: palavra inexistente "${id}"`);
+      if (vistos.has(id)) erros.push(`trilha › ${l.id}: "${id}" repetida em outra lição`);
+      vistos.add(id);
+    }
+  }
+  console.log(`Trilha: ${trilha.licoes.length} lições, ${vistos.size} palavras`);
 }
 
 console.log(`Palavras: ${total} (${Object.entries(porNivel).map(([n, q]) => `${n}: ${q}`).join(", ")})`);

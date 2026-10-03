@@ -1,12 +1,13 @@
 // Service worker: guarda o app inteiro no aparelho para funcionar offline.
 // A lista de arquivos e a versão são geradas por scripts/gerar-pwa.mjs (não edite o bloco à mão).
 // ---- início do bloco gerado ----
-const VERSAO = "1ef74eb11315";
+const VERSAO = "2408a993b77d";
 const ARQUIVOS = [
   "./",
   "./css/style.css",
   "./data/dialogos.json",
   "./data/pronuncia.json",
+  "./data/trilha.json",
   "./data/vocab/a1/adjetivos.json",
   "./data/vocab/a1/basico.json",
   "./data/vocab/a1/casa.json",

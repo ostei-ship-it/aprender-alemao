@@ -2,15 +2,15 @@
   "tema": "compras",
   "nivel": "A1",
   "palavras": [
-    {"id":"compras-geld","alemao":"Geld","classe":"substantivo","artigo":"das","plural":null,"portugues":"dinheiro","exemplo":"Ich habe kein Geld.","exemplo_pt":"Eu não tenho dinheiro.","tema":"compras","nivel":"A1"},
-    {"id":"compras-preis","alemao":"Preis","classe":"substantivo","artigo":"der","plural":"Preise","portugues":"preço","exemplo":"Der Preis ist gut.","exemplo_pt":"O preço é bom.","tema":"compras","nivel":"A1"},
-    {"id":"compras-karte","alemao":"Karte","classe":"substantivo","artigo":"die","plural":"Karten","portugues":"cartão / mapa / ingresso","exemplo":"Kann ich mit Karte bezahlen?","exemplo_pt":"Posso pagar com cartão?","tema":"compras","nivel":"A1"},
-    {"id":"compras-markt","alemao":"Markt","classe":"substantivo","artigo":"der","plural":"Märkte","portugues":"feira / mercado","exemplo":"Am Samstag gehe ich auf den Markt.","exemplo_pt":"No sábado eu vou à feira.","tema":"compras","nivel":"A1"},
-    {"id":"compras-tasche","alemao":"Tasche","classe":"substantivo","artigo":"die","plural":"Taschen","portugues":"bolsa / sacola","exemplo":"Meine Tasche ist schwer.","exemplo_pt":"Minha bolsa está pesada.","tema":"compras","nivel":"A1"},
-    {"id":"compras-kasse","alemao":"Kasse","classe":"substantivo","artigo":"die","plural":"Kassen","portugues":"caixa (de pagamento)","exemplo":"Bitte zahlen Sie an der Kasse.","exemplo_pt":"Por favor, pague no caixa.","tema":"compras","nivel":"A1"},
-    {"id":"compras-angebot","alemao":"Angebot","classe":"substantivo","artigo":"das","plural":"Angebote","portugues":"oferta / promoção","exemplo":"Heute ist Kaffee im Angebot.","exemplo_pt":"Hoje o café está em promoção.","tema":"compras","nivel":"A1"},
-    {"id":"compras-stueck","alemao":"Stück","classe":"substantivo","artigo":"das","plural":"Stücke","portugues":"pedaço / unidade","exemplo":"Ein Stück Kuchen, bitte.","exemplo_pt":"Um pedaço de bolo, por favor.","tema":"compras","nivel":"A1"},
-    {"id":"compras-kilo","alemao":"Kilo","classe":"substantivo","artigo":"das","plural":"Kilos","portugues":"quilo","exemplo":"Ein Kilo Tomaten, bitte.","exemplo_pt":"Um quilo de tomates, por favor.","tema":"compras","nivel":"A1","nota":"Depois de número costuma ficar invariável: zwei Kilo Tomaten."},
-    {"id":"compras-bar","alemao":"bar","classe":"advérbio","portugues":"em dinheiro (vivo)","exemplo":"Ich bezahle bar.","exemplo_pt":"Eu pago em dinheiro.","tema":"compras","nivel":"A1"}
+    {"id":"compras-geld","alemao":"Geld","classe":"substantivo","artigo":"das","plural":null,"pronuncia_pt":"GUÉLT","portugues":"dinheiro","exemplo":"Ich habe kein Geld.","exemplo_pt":"Eu não tenho dinheiro.","tema":"compras","nivel":"A1"},
+    {"id":"compras-preis","alemao":"Preis","classe":"substantivo","artigo":"der","plural":"Preise","pronuncia_pt":"PRRAIS","portugues":"preço","exemplo":"Der Preis ist gut.","exemplo_pt":"O preço é bom.","tema":"compras","nivel":"A1"},
+    {"id":"compras-karte","alemao":"Karte","classe":"substantivo","artigo":"die","plural":"Karten","pronuncia_pt":"KAA-te","portugues":"cartão / mapa / ingresso","exemplo":"Kann ich mit Karte bezahlen?","exemplo_pt":"Posso pagar com cartão?","tema":"compras","nivel":"A1"},
+    {"id":"compras-markt","alemao":"Markt","classe":"substantivo","artigo":"der","plural":"Märkte","pronuncia_pt":"MAAKT","portugues":"feira / mercado","exemplo":"Am Samstag gehe ich auf den Markt.","exemplo_pt":"No sábado eu vou à feira.","tema":"compras","nivel":"A1"},
+    {"id":"compras-tasche","alemao":"Tasche","classe":"substantivo","artigo":"die","plural":"Taschen","pronuncia_pt":"TA-xe","portugues":"bolsa / sacola","exemplo":"Meine Tasche ist schwer.","exemplo_pt":"Minha bolsa está pesada.","tema":"compras","nivel":"A1"},
+    {"id":"compras-kasse","alemao":"Kasse","classe":"substantivo","artigo":"die","plural":"Kassen","pronuncia_pt":"KA-sse","portugues":"caixa (de pagamento)","exemplo":"Bitte zahlen Sie an der Kasse.","exemplo_pt":"Por favor, pague no caixa.","tema":"compras","nivel":"A1"},
+    {"id":"compras-angebot","alemao":"Angebot","classe":"substantivo","artigo":"das","plural":"Angebote","pronuncia_pt":"AN-gue-bôt","portugues":"oferta / promoção","exemplo":"Heute ist Kaffee im Angebot.","exemplo_pt":"Hoje o café está em promoção.","tema":"compras","nivel":"A1"},
+    {"id":"compras-stueck","alemao":"Stück","classe":"substantivo","artigo":"das","plural":"Stücke","pronuncia_pt":"XTÜK","portugues":"pedaço / unidade","exemplo":"Ein Stück Kuchen, bitte.","exemplo_pt":"Um pedaço de bolo, por favor.","tema":"compras","nivel":"A1"},
+    {"id":"compras-kilo","alemao":"Kilo","classe":"substantivo","artigo":"das","plural":"Kilos","pronuncia_pt":"KI-lo","portugues":"quilo","exemplo":"Ein Kilo Tomaten, bitte.","exemplo_pt":"Um quilo de tomates, por favor.","tema":"compras","nivel":"A1","nota":"Depois de número costuma ficar invariável: zwei Kilo Tomaten."},
+    {"id":"compras-bar","alemao":"bar","classe":"advérbio","pronuncia_pt":"BAA","portugues":"em dinheiro (vivo)","exemplo":"Ich bezahle bar.","exemplo_pt":"Eu pago em dinheiro.","tema":"compras","nivel":"A1"}
   ]
 }

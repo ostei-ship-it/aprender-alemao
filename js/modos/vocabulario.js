@@ -1,5 +1,5 @@
 // Lista navegável do vocabulário, com busca e filtro por tema.
-import { el, palavraDE, pluralDE, perfektDE, botoesAudio, badgeRevisar, seletorTema } from "../ui.js";
+import { el, palavraDE, pluralDE, perfektDE, soaComo, botoesAudio, badgeRevisar, seletorTema } from "../ui.js";
 import { dados, formaCompleta } from "../dados.js";
 import { cardDe, ehAprendida } from "../progresso.js";
 
@@ -48,6 +48,7 @@ export function render(raiz) {
         badgeRevisar(p)),
       el("div", { class: "vocab-detalhe" },
         el("div", { class: "muted" }, `${p.classe} · ${p.nivel}`),
+        soaComo(p),
         pluralDE(p),
         perfektDE(p),
         el("div", { class: "exemplo" }, el("span", { lang: "de" }, p.exemplo), botoesAudio(p.exemplo, { rotulo: "exemplo" }), el("div", { class: "muted" }, p.exemplo_pt)),

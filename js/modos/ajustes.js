@@ -106,6 +106,7 @@ export function render(raiz) {
       el("label", {}, "Meta diária de palavras novas", meta, el("small", { class: "muted" }, "Quantas palavras novas entram nos flashcards por dia (as revisões não contam).")),
       el("label", {}, "Direção dos flashcards", direcao),
       el("label", { class: "check" }, el("input", { type: "checkbox", checked: c.autoAudio, onchange: (e) => atualizarConfig({ autoAudio: e.target.checked }) }), " Tocar o áudio automaticamente"),
+      el("label", { class: "check" }, el("input", { type: "checkbox", checked: c.mostrarPronuncia !== false, onchange: (e) => atualizarConfig({ mostrarPronuncia: e.target.checked }) }), " Mostrar como a palavra soa (pronúncia em português)"),
       velocidade("velocidade", "Velocidade normal da voz", 0.5, 1.3),
       velocidade("velocidadeLenta", "Velocidade lenta (botão 🐢)", 0.3, 0.9),
       el("label", {}, "Voz", seletorVoz),

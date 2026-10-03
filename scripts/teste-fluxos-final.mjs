@@ -35,6 +35,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   const txt = await page.textContent("#conteudo");
   ok(/palavras aprendidas/.test(txt) && /para revisar hoje/.test(txt) && /dias? seguidos?/.test(txt), "mostra aprendidas, revisões de hoje e sequência");
   ok(/1 🔥/.test(txt), "sequência = 1 dia após estudar hoje");
+  ok(/Lição 1 de 14: Primeiras palavras/.test(txt), "Painel mostra a lição atual da trilha");
   ok((await page.$$eval(".tabela-temas tbody tr", (x) => x.length)) >= 10, "tabela de acerto por tema");
   await page.fill(".cartao input[type=number]", "20");
   await page.dispatchEvent(".cartao input[type=number]", "change");
@@ -59,8 +60,17 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
   const sons = await page.$$eval(".som", (x) => x.map((s) => s.querySelector("h3").textContent));
   for (const s of ["ü", "ö", "ä", "ch", "r", "z", "w", "v", "ei", "Consoantes finais"]) ok(sons.some((t) => t.includes(s)), `seção "${s}"`);
   await limparFalas();
-  await page.click(".som .btn-audio >> nth=0");
+  await page.click("#som-ue .btn-audio >> nth=0");
   ok((await falas())[0]?.texto === "über", "exemplo de pronúncia toca em áudio");
+  ok(/MAIÚSCULAS/.test(await page.textContent("#legenda")) && /rh/.test(await page.textContent("#legenda")), "legenda explica como ler o \"soa como\"");
+  ok((await page.textContent("#som-ue")).includes("Ü-ba"), "exemplos de som mostram como soam (über = Ü-ba)");
+  await page.click("#treino-rechts summary");
+  const passos = await page.$$eval("#treino-rechts .passos li", (li) => li.map((x) => x.querySelector(".palavra-de").textContent + "=" + x.querySelector(".soa-como").textContent));
+  ok(passos.join(" ") === "ich=IRH echt=ÉRHT Recht=RRÉRHT rechts=RRÉRHTS", `rechts passo a passo: ${passos.join(" → ")}`);
+  await limparFalas();
+  await page.click("#treino-rechts .passos li:nth-child(3) .btn-audio[title='Ouvir devagar']");
+  const f = (await falas())[0];
+  ok(f?.texto === "Recht" && f.rate < 0.9, "cada passo tem áudio (inclusive devagar)");
 
   console.log("Exportar/importar:");
   await ir("ajustes");
@@ -93,7 +103,14 @@ export async function testarPerfis({ page, ir, ok }) {
   ok((await page.textContent("#perfil-chip")).includes("Ana"), "novo perfil \"Ana\" criado e ativado");
   await ir("painel");
   ok(/(^|\D)0\/15(?!\d)/.test(await page.textContent("#conteudo .stats")), "Ana começa do zero (0/15 novas hoje, meta padrão)");
+  await ir("quiz");
+  await page.click("text=Começar");
+  await page.waitForSelector("text=Você ainda não estudou palavras suficientes");
+  ok(await page.$('a[href="#/flashcards"]:has-text("Ir para os flashcards")'), "iniciante sem palavras estudadas: o quiz manda para os flashcards em vez de mostrar palavras desconhecidas");
   await ir("flashcards");
+  await page.waitForSelector(".licao-intro");
+  await page.keyboard.press(" ");
+  await page.waitForSelector(".flash-card");
   await page.keyboard.press(" ");
   await page.click(".btn-facil");
   const p2 = await ler("p2");

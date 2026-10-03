@@ -1,5 +1,5 @@
 // Ouvir e escrever (ditado): o app fala, o aluno digita.
-import { el, feedback, seletorTema, tecladoEspecial, palavraDE, botoesAudio } from "../ui.js";
+import { el, feedback, avisoSemEstudadas, seletorTema, tecladoEspecial, palavraDE, soaComo, botoesAudio } from "../ui.js";
 import { dados, palavrasAtivas, embaralhar, formaCompleta } from "../dados.js";
 import { falar } from "../audio.js";
 import { config, registrarResposta, cardDe } from "../progresso.js";
@@ -7,7 +7,7 @@ import { avaliarEscrita, alinharPalavras, normalizar } from "../comparar.js";
 import { avaliarDigitado } from "./quiz.js";
 
 export function render(raiz) {
-  const opcoes = { conteudo: "palavras", tema: "", soEstudadas: false };
+  const opcoes = { conteudo: "palavras", tema: "", soEstudadas: true };
   const corpo = el("div");
   raiz.append(
     el("div", { class: "cabecalho-modo" }, el("h2", {}, "Ouvir e escrever"),
@@ -29,7 +29,10 @@ export function render(raiz) {
     let lista = palavrasAtivas();
     if (opcoes.tema) lista = lista.filter((p) => p.tema === opcoes.tema);
     if (opcoes.soEstudadas) lista = lista.filter((p) => cardDe(p.id));
-    if (!lista.length) return corpo.prepend(feedback("parcial", "Nenhuma palavra com esses filtros."));
+    if (!lista.length) {
+      if (opcoes.soEstudadas) return corpo.prepend(avisoSemEstudadas(() => { opcoes.soEstudadas = false; iniciar(); }));
+      return corpo.prepend(feedback("parcial", "Nenhuma palavra com esses filtros."));
+    }
     rodar(embaralhar(lista).slice(0, 10));
   }
 
@@ -63,6 +66,7 @@ export function render(raiz) {
         const marcado = alinharPalavras(texto, desistiu ? "" : digitado);
         area.append(feedback(r.nivel, r.titulo,
           el("span", { lang: "de" }, frase ? textoMarcado(texto, marcado) : palavraDE(p), botoesAudio(texto)),
+          frase ? null : soaComo(p),
           el("span", { class: "muted" }, frase ? p.exemplo_pt : p.portugues),
           ...r.notas.map((n) => el("span", {}, n))));
         proximo.hidden = false;

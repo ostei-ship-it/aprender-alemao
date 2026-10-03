@@ -15,6 +15,7 @@ export const CONFIG_PADRAO = {
   niveis: ["A1"],
   temas: [], // vazio = todos os temas
   vozURI: null,
+  mostrarPronuncia: true, // mostrar "soa como" (pronúncia aproximada em português)
 };
 
 function estadoVazio() {

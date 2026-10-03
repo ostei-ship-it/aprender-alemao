@@ -130,12 +130,21 @@ try {
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await ir("flashcards");
+  // Iniciante: começa pela Lição 1 da trilha, com palavras simples e o "soa como".
+  await page.waitForSelector(".licao-intro");
+  ok(/Lição 1 de 14/.test(await page.textContent(".licao-intro")) && /Primeiras palavras/.test(await page.textContent(".licao-intro")), "primeira tela é a apresentação da Lição 1 (Primeiras palavras)");
+  await page.keyboard.press(" ");
+  await page.waitForSelector(".flash-card");
+  const primeira = await page.textContent(".flash-frente .palavra-de");
+  ok(primeira === "Hallo", `primeira palavra é simples: "${primeira}"`);
+  ok((await page.textContent(".flash-frente .soa-como")).includes("ha-LÔ"), "mostra como soa em português (ha-LÔ)");
   const status = await page.textContent(".flash-status");
   ok(/15 na fila/.test(status), `fila inicial respeita a meta diária de 15 (${status.trim()})`);
   await page.keyboard.press(" ");
   await page.waitForSelector(".botoes-sm2");
   ok(await page.$(".flash-card .exemplo"), "verso mostra frase de exemplo");
   await page.click(".btn-bom");
+  ok((await page.textContent(".flash-frente .palavra-de")) === "Tschüss", "segunda palavra segue a ordem da lição (Tschüss)");
   await page.keyboard.press(" ");
   await page.click(".btn-errei");
   const salvo = await page.evaluate(() => JSON.parse(localStorage.getItem("aprender-alemao:progresso:" + JSON.parse(localStorage.getItem("aprender-alemao:perfis")).ativo)));

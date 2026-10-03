@@ -1,0 +1,75 @@
+{
+  "_formato": "Trilha para iniciantes: as palavras novas dos flashcards seguem estas lições, nesta ordem. Depois da trilha, as demais palavras entram das mais curtas/simples para as mais longas. Cada lição: id, titulo, dica (mostrada antes da primeira palavra da lição) e palavras (ids do vocabulário).",
+  "licoes": [
+    {
+      "id": "l01", "titulo": "Primeiras palavras",
+      "dica": "Comece pelo que você vai usar todo dia. Toque em 🔊, escute e repita em voz alta. Embaixo de cada palavra aparece como ela soa lida em português (a legenda está em Pronúncia).",
+      "palavras": ["cumprimentos-hallo", "cumprimentos-tschuess", "cumprimentos-danke", "cumprimentos-bitte", "cumprimentos-ja", "cumprimentos-nein"]
+    },
+    {
+      "id": "l02", "titulo": "Eu, você, ele, ela",
+      "dica": "O \"ch\" de ich não é \"x\" nem \"k\": é um chiado com a língua na posição do \"i\". No \"soa como\" ele aparece como \"rh\": ich = IRH.",
+      "palavras": ["basico-ich", "basico-du", "basico-er", "basico-sie-ela", "basico-wir", "basico-und"]
+    },
+    {
+      "id": "l03", "titulo": "Números de 0 a 5",
+      "dica": "O z alemão soa \"ts\" e o w soa \"v\": zwei = TSVAI. E o v soa \"f\": vier = FIA.",
+      "palavras": ["numeros-null", "numeros-eins", "numeros-zwei", "numeros-drei", "numeros-vier", "numeros-fuenf"]
+    },
+    {
+      "id": "l04", "titulo": "Números de 6 a 10",
+      "dica": "Em acht, o \"ch\" vem da garganta, como o \"rr\" de \"carro\": ARRT. O s antes de vogal soa \"z\": sieben = ZI-ben.",
+      "palavras": ["numeros-sechs", "numeros-sieben", "numeros-acht", "numeros-neun", "numeros-zehn"]
+    },
+    {
+      "id": "l05", "titulo": "Família",
+      "dica": "Todo substantivo tem um artigo e começa com letra maiúscula. Aprenda sempre os dois juntos: der (azul, masculino), die (vermelho, feminino), das (verde, neutro). O gênero nem sempre é o mesmo do português.",
+      "palavras": ["familia-mutter", "familia-vater", "familia-kind", "familia-bruder", "familia-schwester", "familia-familie"]
+    },
+    {
+      "id": "l06", "titulo": "Comer e beber",
+      "dica": "O -er no fim da palavra soa como um \"a\" fraco: Wasser = VA-ssa. E o e sem acento no fim é um \"ê\" curtinho, nunca \"i\".",
+      "palavras": ["comida-wasser", "comida-brot", "comida-kaffee", "comida-tee", "comida-milch", "comida-bier", "comida-apfel"]
+    },
+    {
+      "id": "l07", "titulo": "Bom dia, boa noite",
+      "dica": "Guten Tag serve para o dia todo e é mais formal. Gute Nacht é só para se despedir antes de dormir; para cumprimentar à noite use Guten Abend.",
+      "palavras": ["cumprimentos-guten-morgen", "cumprimentos-guten-tag", "cumprimentos-guten-abend", "cumprimentos-gute-nacht", "cumprimentos-danke-schoen"]
+    },
+    {
+      "id": "l08", "titulo": "Em casa",
+      "dica": "O ü é um \"i\" dito com bico de \"u\" (die Tür = TÜA). O sch soa \"x\" de xícara (der Tisch = TIX).",
+      "palavras": ["casa-haus", "casa-zimmer", "casa-tuer", "casa-tisch", "casa-stuhl", "casa-bett"]
+    },
+    {
+      "id": "l09", "titulo": "Perguntas",
+      "dica": "As palavras de pergunta começam com W, que soa \"v\": was (o quê), wer (quem), wo (onde), wie (como), wann (quando).",
+      "palavras": ["basico-was", "basico-wer", "basico-wo", "basico-wie", "basico-wann", "basico-nicht"]
+    },
+    {
+      "id": "l10", "titulo": "Verbos do dia a dia",
+      "dica": "No dicionário os verbos terminam em -en. sein (ser/estar) e haben (ter) são os mais usados — e irregulares: ich bin, ich habe.",
+      "palavras": ["verbos-sein", "verbos-haben", "verbos-gehen", "verbos-kommen", "verbos-essen", "verbos-trinken"]
+    },
+    {
+      "id": "l11", "titulo": "Na cidade",
+      "dica": "rechts junta três sons difíceis: r de garganta + \"é\" + o chiado do ich + \"ts\" = RRÉRHTS. Treine passo a passo na seção Pronúncia. E st no começo da palavra soa \"xt\": Stadt = XTAT.",
+      "palavras": ["cidade-bus", "cidade-auto", "cidade-stadt", "cidade-strasse", "cidade-links", "cidade-rechts"]
+    },
+    {
+      "id": "l12", "titulo": "Como é?",
+      "dica": "Depois de ist o adjetivo não muda: Das Haus ist groß. O ß soa como \"ss\".",
+      "palavras": ["adjetivos-gut", "adjetivos-gross", "adjetivos-klein", "adjetivos-neu", "adjetivos-alt", "adjetivos-schoen"]
+    },
+    {
+      "id": "l13", "titulo": "Hoje e amanhã",
+      "dica": "morgen (minúsculo) = amanhã; der Morgen (maiúsculo, com artigo) = a manhã.",
+      "palavras": ["tempo-heute", "tempo-morgen", "tempo-tag", "tempo-woche", "tempo-jahr", "tempo-uhr"]
+    },
+    {
+      "id": "l14", "titulo": "Frases de sobrevivência",
+      "dica": "Agora as primeiras frases prontas: peça para repetir, para falar devagar e diga que não entendeu. Decore como um bloco, sem se preocupar com a gramática.",
+      "palavras": ["cumprimentos-wie-geht-s", "cumprimentos-mir-geht-es-gut", "cumprimentos-ich-verstehe-nicht", "cumprimentos-noch-einmal-bitte", "cumprimentos-langsamer-bitte", "cumprimentos-bitte-schoen"]
+    }
+  ]
+}

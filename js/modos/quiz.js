@@ -1,5 +1,5 @@
 // Quiz: múltipla escolha (DE→PT e PT→DE), digitar a tradução e quiz de artigos.
-import { el, palavraDE, botoesAudio, feedback, seletorTema, tecladoEspecial, porcentagem, NOMES_GENERO } from "../ui.js";
+import { el, palavraDE, soaComo, botoesAudio, feedback, avisoSemEstudadas, seletorTema, tecladoEspecial, porcentagem, NOMES_GENERO } from "../ui.js";
 import { dados, palavrasAtivas, embaralhar, formaCompleta } from "../dados.js";
 import { falar } from "../audio.js";
 import { config, registrarResposta, cardDe } from "../progresso.js";
@@ -14,7 +14,7 @@ const TIPOS = [
 ];
 
 export function render(raiz) {
-  const opcoes = { tipo: "de-pt", tema: "", quantidade: 10, soEstudadas: false };
+  const opcoes = { tipo: "de-pt", tema: "", quantidade: 10, soEstudadas: true };
   const corpo = el("div");
   raiz.append(el("div", { class: "cabecalho-modo" }, el("h2", {}, "Quiz"), el("p", { class: "muted" }, "Teste o que você já viu nos flashcards ou explore palavras novas.")), corpo);
   let limparTecla = null;
@@ -55,7 +55,8 @@ export function render(raiz) {
       perguntas.push({ p, tipo });
     }
     if (!perguntas.length) {
-      corpo.prepend(feedback("parcial", "Nenhuma palavra disponível com esses filtros.", opcoes.soEstudadas ? "Estude algumas palavras nos flashcards primeiro ou desmarque a opção." : ""));
+      if (opcoes.soEstudadas) corpo.prepend(avisoSemEstudadas(() => { opcoes.soEstudadas = false; iniciar(); }));
+      else corpo.prepend(feedback("parcial", "Nenhuma palavra disponível com esses filtros."));
       return;
     }
     rodar(perguntas);
@@ -112,6 +113,7 @@ export function render(raiz) {
       const resposta = (nivel, titulo, ...extra) => {
         area.append(feedback(nivel, titulo,
           el("span", {}, palavraDE(p), botoesAudio(formaCompleta(p)), " = ", p.portugues),
+          soaComo(p),
           el("span", { class: "muted", lang: "de" }, p.exemplo), ...extra));
         proximo.hidden = false;
         proximo.focus();

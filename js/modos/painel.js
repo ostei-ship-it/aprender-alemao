@@ -36,6 +36,7 @@ export function render(raiz) {
       el("p", { class: "muted" }, revisarHoje.length || novas < meta
         ? `Hoje: ${revisarHoje.length} revisão(ões) e ${Math.max(0, meta - novas)} palavra(s) nova(s) para atingir a meta.`
         : "Meta de hoje cumprida! 🎉 Continue com quiz, fala ou diálogos."),
+      cartaoTrilha(),
       el("a", { class: "btn btn-primario", href: "#/flashcards" }, "Estudar agora")),
 
     el("div", { class: "stats" },
@@ -54,6 +55,19 @@ export function render(raiz) {
     secaoHistorico(),
     secaoProximas(),
   );
+
+  // Trilha de iniciantes: em que lição a pessoa está.
+  function cartaoTrilha() {
+    const licoes = dados().licoes;
+    const feitas = licoes.filter((l) => l.palavras.every((id) => est.cards[id])).length;
+    const atual = licoes.find((l) => !l.palavras.every((id) => est.cards[id]));
+    if (!atual) return el("p", { class: "nota" }, `✓ Trilha de iniciantes concluída (${licoes.length} lições). Agora as palavras novas vêm das mais simples para as mais difíceis.`);
+    const vistas = atual.palavras.filter((id) => est.cards[id]).length;
+    return el("div", { class: "nota trilha-atual" },
+      el("strong", {}, `Trilha de iniciantes · Lição ${licoes.indexOf(atual) + 1} de ${licoes.length}: ${atual.titulo}`),
+      el("div", { class: "muted" }, `${vistas} de ${atual.palavras.length} palavras desta lição · ${feitas} lição(ões) concluída(s)`),
+      barra(porcentagem(feitas, licoes.length)));
+  }
 
   function secaoNiveis() {
     return el("div", { class: "cartao secao" }, el("h3", {}, "Progresso por nível"),

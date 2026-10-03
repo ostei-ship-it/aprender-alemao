@@ -2,7 +2,9 @@
 export async function testar({ page, ir, ok, falas, limparFalas }) {
   console.log("Quiz:");
   await ir("quiz");
+  ok(await page.isChecked("text=Só palavras que já estudei"), "exercícios usam por padrão só palavras já estudadas");
   await page.click("text=der / die / das");
+  await page.uncheck("text=Só palavras que já estudei");
   await page.click("text=Começar");
   for (let i = 0; i < 10; i++) {
     await page.waitForSelector(".opcoes-artigo .btn:not([disabled])");
@@ -19,6 +21,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
 
   await page.click("text=Mudar opções");
   await page.click("text=Alemão → português");
+  await page.uncheck("text=Só palavras que já estudei");
   await page.click("text=Começar");
   await page.waitForSelector(".opcoes .opcao");
   const nOpcoes = await page.$$eval(".opcoes .opcao", (x) => x.length);
@@ -30,6 +33,7 @@ export async function testar({ page, ir, ok, falas, limparFalas }) {
 
   await ir("quiz");
   await page.click("text=Digitar em alemão");
+  await page.uncheck("text=Só palavras que já estudei");
   await page.click("text=Começar");
   await page.waitForSelector(".quiz-card input");
   await page.click(".teclado-especial .btn-letra >> nth=0");
