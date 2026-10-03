@@ -1,0 +1,184 @@
+{
+  "versao": 1,
+  "niveis": [
+    "A1",
+    "A2",
+    "B1"
+  ],
+  "temas": [
+    {
+      "id": "cumprimentos",
+      "nome": "Cumprimentos e expressões",
+      "nivel": "A1",
+      "arquivo": "a1/cumprimentos.json"
+    },
+    {
+      "id": "numeros",
+      "nome": "Números",
+      "nivel": "A1",
+      "arquivo": "a1/numeros.json"
+    },
+    {
+      "id": "familia",
+      "nome": "Família e pessoas próximas",
+      "nivel": "A1",
+      "arquivo": "a1/familia.json"
+    },
+    {
+      "id": "comida",
+      "nome": "Comida e bebida",
+      "nivel": "A1",
+      "arquivo": "a1/comida.json"
+    },
+    {
+      "id": "casa",
+      "nome": "Casa e moradia",
+      "nivel": "A1",
+      "arquivo": "a1/casa.json"
+    },
+    {
+      "id": "trabalho",
+      "nome": "Trabalho e estudo",
+      "nivel": "A1",
+      "arquivo": "a1/trabalho.json"
+    },
+    {
+      "id": "compras",
+      "nome": "Compras e dinheiro",
+      "nivel": "A1",
+      "arquivo": "a1/compras.json"
+    },
+    {
+      "id": "cidade",
+      "nome": "Cidade e transporte",
+      "nivel": "A1",
+      "arquivo": "a1/cidade.json"
+    },
+    {
+      "id": "tempo",
+      "nome": "Tempo, dias e meses",
+      "nivel": "A1",
+      "arquivo": "a1/tempo.json"
+    },
+    {
+      "id": "clima",
+      "nome": "Clima e estações",
+      "nivel": "A1",
+      "arquivo": "a1/clima.json"
+    },
+    {
+      "id": "verbos",
+      "nome": "Verbos essenciais",
+      "nivel": "A1",
+      "arquivo": "a1/verbos.json"
+    },
+    {
+      "id": "adjetivos",
+      "nome": "Adjetivos comuns",
+      "nivel": "A1",
+      "arquivo": "a1/adjetivos.json"
+    },
+    {
+      "id": "cores",
+      "nome": "Cores",
+      "nivel": "A1",
+      "arquivo": "a1/cores.json"
+    },
+    {
+      "id": "corpo",
+      "nome": "Corpo e saúde",
+      "nivel": "A1",
+      "arquivo": "a1/corpo.json"
+    },
+    {
+      "id": "roupas",
+      "nome": "Roupas",
+      "nivel": "A1",
+      "arquivo": "a1/roupas.json"
+    },
+    {
+      "id": "basico",
+      "nome": "Palavras básicas (pronomes, perguntas, ligação)",
+      "nivel": "A1",
+      "arquivo": "a1/basico.json"
+    },
+    {
+      "id": "viagem",
+      "nome": "Viagens e férias",
+      "nivel": "A2",
+      "arquivo": "a2/viagem.json"
+    },
+    {
+      "id": "saude",
+      "nome": "Saúde e bem-estar",
+      "nivel": "A2",
+      "arquivo": "a2/saude.json"
+    },
+    {
+      "id": "lazer",
+      "nome": "Tempo livre e hobbies",
+      "nivel": "A2",
+      "arquivo": "a2/lazer.json"
+    },
+    {
+      "id": "profissao",
+      "nome": "Trabalho, profissão e burocracia",
+      "nivel": "A2",
+      "arquivo": "a2/profissao.json"
+    },
+    {
+      "id": "moradia",
+      "nome": "Moradia e tarefas de casa",
+      "nivel": "A2",
+      "arquivo": "a2/moradia.json"
+    },
+    {
+      "id": "consumo",
+      "nome": "Compras, banco e correio",
+      "nivel": "A2",
+      "arquivo": "a2/consumo.json"
+    },
+    {
+      "id": "cozinha",
+      "nome": "Cozinha e restaurante",
+      "nivel": "A2",
+      "arquivo": "a2/cozinha.json"
+    },
+    {
+      "id": "eventos",
+      "nome": "Festas, ocasiões e relacionamentos",
+      "nivel": "A2",
+      "arquivo": "a2/eventos.json"
+    },
+    {
+      "id": "natureza",
+      "nome": "Natureza, animais e tempo",
+      "nivel": "A2",
+      "arquivo": "a2/natureza.json"
+    },
+    {
+      "id": "tecnologia",
+      "nome": "Mídia e tecnologia",
+      "nivel": "A2",
+      "arquivo": "a2/tecnologia.json"
+    },
+    {
+      "id": "sentimentos",
+      "nome": "Sentimentos e personalidade",
+      "nivel": "A2",
+      "arquivo": "a2/sentimentos.json"
+    },
+    {
+      "id": "verbos-a2",
+      "nome": "Verbos A2",
+      "nivel": "A2",
+      "arquivo": "a2/verbos-a2.json"
+    },
+    {
+      "id": "conectores",
+      "nome": "Conectores e advérbios",
+      "nivel": "A2",
+      "arquivo": "a2/conectores.json"
+    }
+  ]
+}

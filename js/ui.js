@@ -1,0 +1,116 @@
+// Utilitários de interface.
+import { falar, sinteseSuportada } from "./audio.js";
+
+// el("div", {class: "x", onclick: fn}, filho1, "texto", ...)
+export function el(tag, attrs = {}, ...filhos) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === undefined || v === null || v === false) continue;
+    if (k.startsWith("on") && typeof v === "function") e.addEventListener(k.slice(2), v);
+    else if (k === "class") e.className = v;
+    else if (k === "html") e.innerHTML = v;
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const f of filhos.flat(Infinity)) {
+    if (f === null || f === undefined || f === false) continue;
+    e.append(f instanceof Node ? f : document.createTextNode(String(f)));
+  }
+  return e;
+}
+
+export const NOMES_GENERO = { der: "masculino", die: "feminino", das: "neutro" };
+
+export function artigo(art, { plural = false } = {}) {
+  return el("span", { class: `art ${plural ? "art-pl" : `art-${art}`}`, title: plural ? "plural" : NOMES_GENERO[art] }, plural ? "die" : art);
+}
+
+// Palavra em alemão; substantivos sempre com artigo colorido.
+export function palavraDE(p, { tamanho = "" } = {}) {
+  const span = el("span", { class: `palavra-de ${tamanho}`, lang: "de" });
+  if (p.classe === "substantivo") {
+    span.append(artigo(p.artigo, { plural: !!p.so_plural }), " ");
+  }
+  span.append(p.alemao);
+  if (p.so_plural) span.append(el("small", { class: "muted" }, " (só plural)"));
+  return span;
+}
+
+export function pluralDE(p) {
+  if (p.classe !== "substantivo" || p.so_plural) return null;
+  if (!p.plural) return el("span", { class: "plural muted" }, "Plural: geralmente não se usa");
+  return el("span", { class: "plural" }, "Plural: ", el("span", { lang: "de" }, artigo("die", { plural: true }), " ", p.plural));
+}
+
+// Botões de áudio: normal e lento.
+export function botoesAudio(texto, { rotulo = "" } = {}) {
+  const desab = !sinteseSuportada();
+  return el(
+    "span",
+    { class: "audio-btns" },
+    el("button", { class: "btn-audio", type: "button", title: "Ouvir", "aria-label": `Ouvir ${rotulo || texto}`, disabled: desab, onclick: (e) => { e.stopPropagation(); falar(texto); } }, "🔊"),
+    el("button", { class: "btn-audio", type: "button", title: "Ouvir devagar", "aria-label": `Ouvir devagar ${rotulo || texto}`, disabled: desab, onclick: (e) => { e.stopPropagation(); falar(texto, { lento: true }); } }, "🐢"),
+  );
+}
+
+// Perfekt (passado composto) dos verbos que têm o campo, ex.: "ist abgefahren".
+export function perfektDE(p) {
+  if (!p.perfekt) return null;
+  return el("span", { class: "plural" }, "Perfekt: ", el("span", { lang: "de", class: "palavra-de" }, p.perfekt), botoesAudio(p.perfekt));
+}
+
+export function badgeRevisar(p) {
+  if (!p.revisar) return null;
+  return el("span", { class: "badge-revisar", title: p.nota_revisao || "Item marcado para revisão" }, "⚑ revisar");
+}
+
+let toastTimer;
+export function toast(msg, tipo = "") {
+  let t = document.getElementById("toast");
+  if (!t) {
+    t = el("div", { id: "toast", role: "status", "aria-live": "polite" });
+    document.body.append(t);
+  }
+  t.textContent = msg;
+  t.className = `toast mostrar ${tipo}`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (t.className = "toast"), 3500);
+}
+
+export function feedback(nivel, titulo, ...detalhes) {
+  const icone = { acerto: "✓", parcial: "≈", erro: "✗" }[nivel] || "";
+  return el("div", { class: `feedback fb-${nivel}`, role: "status" }, el("strong", {}, `${icone} ${titulo}`), ...detalhes);
+}
+
+export function porcentagem(a, total) {
+  return total ? Math.round((a / total) * 100) : 0;
+}
+
+// Teclado de letras especiais para campos de texto.
+export function tecladoEspecial(input) {
+  return el(
+    "div",
+    { class: "teclado-especial" },
+    ["ä", "ö", "ü", "ß", "Ä", "Ö", "Ü"].map((c) =>
+      el("button", {
+        type: "button",
+        class: "btn-letra",
+        onclick: () => {
+          const ini = input.selectionStart ?? input.value.length;
+          const fim = input.selectionEnd ?? input.value.length;
+          input.value = input.value.slice(0, ini) + c + input.value.slice(fim);
+          input.focus();
+          input.setSelectionRange(ini + 1, ini + 1);
+        },
+      }, c),
+    ),
+  );
+}
+
+export function seletorTema(temas, valor, onchange, { incluirTodos = true } = {}) {
+  return el(
+    "select",
+    { class: "select", onchange: (e) => onchange(e.target.value), "aria-label": "Tema" },
+    incluirTodos ? el("option", { value: "" }, "Todos os temas ativos") : null,
+    temas.map((t) => el("option", { value: t.id, selected: t.id === valor }, `${t.nome} (${t.nivel})`)),
+  );
+}

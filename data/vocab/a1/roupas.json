@@ -1,0 +1,18 @@
+{
+  "tema": "roupas",
+  "nivel": "A1",
+  "palavras": [
+    {"id":"roupas-kleidung","alemao":"Kleidung","classe":"substantivo","artigo":"die","plural":null,"portugues":"roupa (coletivo)","exemplo":"Die Kleidung ist im Schrank.","exemplo_pt":"A roupa está no armário.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-hose","alemao":"Hose","classe":"substantivo","artigo":"die","plural":"Hosen","portugues":"calça","exemplo":"Die Hose ist zu lang.","exemplo_pt":"A calça está comprida demais.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-hemd","alemao":"Hemd","classe":"substantivo","artigo":"das","plural":"Hemden","portugues":"camisa","exemplo":"Er trägt ein weißes Hemd.","exemplo_pt":"Ele está usando uma camisa branca.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-t-shirt","alemao":"T-Shirt","classe":"substantivo","artigo":"das","plural":"T-Shirts","portugues":"camiseta","exemplo":"Das T-Shirt ist neu.","exemplo_pt":"A camiseta é nova.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-kleid","alemao":"Kleid","classe":"substantivo","artigo":"das","plural":"Kleider","portugues":"vestido","exemplo":"Das Kleid ist sehr schön.","exemplo_pt":"O vestido é muito bonito.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-rock","alemao":"Rock","classe":"substantivo","artigo":"der","plural":"Röcke","portugues":"saia","exemplo":"Sie trägt einen Rock.","exemplo_pt":"Ela está usando uma saia.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-jacke","alemao":"Jacke","classe":"substantivo","artigo":"die","plural":"Jacken","portugues":"jaqueta / casaco leve","exemplo":"Nimm eine Jacke mit, es ist kalt.","exemplo_pt":"Leve uma jaqueta, está frio.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-mantel","alemao":"Mantel","classe":"substantivo","artigo":"der","plural":"Mäntel","portugues":"casaco / sobretudo","exemplo":"Im Winter trage ich einen Mantel.","exemplo_pt":"No inverno eu uso um casaco.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-schuh","alemao":"Schuh","classe":"substantivo","artigo":"der","plural":"Schuhe","portugues":"sapato","exemplo":"Die Schuhe sind bequem.","exemplo_pt":"Os sapatos são confortáveis.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-socke","alemao":"Socke","classe":"substantivo","artigo":"die","plural":"Socken","portugues":"meia","exemplo":"Wo sind meine Socken?","exemplo_pt":"Onde estão as minhas meias?","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-muetze","alemao":"Mütze","classe":"substantivo","artigo":"die","plural":"Mützen","portugues":"gorro","exemplo":"Die Mütze ist warm.","exemplo_pt":"O gorro é quente.","tema":"roupas","nivel":"A1"},
+    {"id":"roupas-brille","alemao":"Brille","classe":"substantivo","artigo":"die","plural":"Brillen","portugues":"óculos","exemplo":"Ich brauche eine neue Brille.","exemplo_pt":"Eu preciso de óculos novos.","tema":"roupas","nivel":"A1","nota":"Em alemão é singular: eine Brille = um par de óculos."}
+  ]
+}

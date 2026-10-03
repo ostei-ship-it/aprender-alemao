@@ -1,0 +1,217 @@
+{
+  "_formato": "Cada diálogo é uma sequência de falas. tipo 'ouvir': fala do outro personagem (tocada em áudio). tipo 'responder': o aluno escolhe ou fala a resposta; exatamente uma opção tem correta=true. Marque dúvidas com \"revisar\": true e \"nota_revisao\".",
+  "dialogos": [
+    {
+      "id": "cafe",
+      "titulo": "Pedir um café",
+      "nivel": "A1",
+      "icone": "☕",
+      "descricao": "Você está em um café em Berlim e quer beber e comer alguma coisa.",
+      "falas": [
+        { "tipo": "ouvir", "falante": "Garçom", "de": "Guten Tag! Was möchten Sie trinken?", "pt": "Boa tarde! O que o(a) senhor(a) gostaria de beber?" },
+        { "tipo": "responder", "instrucao": "Peça um café com leite.", "opcoes": [
+          { "de": "Ich möchte einen Kaffee mit Milch, bitte.", "pt": "Eu gostaria de um café com leite, por favor.", "correta": true },
+          { "de": "Ich wohne in Berlin.", "pt": "Eu moro em Berlim.", "correta": false },
+          { "de": "Gute Nacht!", "pt": "Boa noite!", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Garçom", "de": "Gern. Möchten Sie auch etwas essen?", "pt": "Com prazer. Gostaria de comer algo também?" },
+        { "tipo": "responder", "instrucao": "Diga que sim e peça um pedaço de bolo.", "opcoes": [
+          { "de": "Ja, ein Stück Kuchen, bitte.", "pt": "Sim, um pedaço de bolo, por favor.", "correta": true },
+          { "de": "Ja, ich spreche Deutsch.", "pt": "Sim, eu falo alemão.", "correta": false },
+          { "de": "Es ist drei Uhr.", "pt": "São três horas.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Garçom", "de": "Hier, bitte. Ein Kaffee mit Milch und ein Stück Kuchen.", "pt": "Aqui está. Um café com leite e um pedaço de bolo." },
+        { "tipo": "responder", "instrucao": "Agradeça.", "opcoes": [
+          { "de": "Danke schön!", "pt": "Muito obrigado!", "correta": true },
+          { "de": "Gute Besserung!", "pt": "Melhoras!", "correta": false },
+          { "de": "Ich bin müde.", "pt": "Estou cansado.", "correta": false }
+        ] },
+        { "tipo": "responder", "instrucao": "Mais tarde: chame o garçom e peça a conta.", "opcoes": [
+          { "de": "Die Rechnung, bitte!", "pt": "A conta, por favor!", "correta": true },
+          { "de": "Die Speisekarte, bitte!", "pt": "O cardápio, por favor!", "correta": false },
+          { "de": "Ein Bier, bitte!", "pt": "Uma cerveja, por favor!", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Garçom", "de": "Das macht sieben Euro fünfzig.", "pt": "Dá sete euros e cinquenta." },
+        { "tipo": "responder", "instrucao": "Entregue o dinheiro e diga que ele pode ficar com o troco.", "opcoes": [
+          { "de": "Hier, bitte. Stimmt so.", "pt": "Aqui está. Pode ficar com o troco.", "correta": true },
+          { "de": "Ich bin sieben Jahre alt.", "pt": "Eu tenho sete anos.", "correta": false },
+          { "de": "Wo ist der Bahnhof?", "pt": "Onde fica a estação?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Garçom", "de": "Vielen Dank! Einen schönen Tag noch!", "pt": "Muito obrigado! Tenha um bom dia!" }
+      ]
+    },
+    {
+      "id": "apresentar",
+      "titulo": "Apresentar-se",
+      "nivel": "A1",
+      "icone": "👋",
+      "descricao": "Primeiro dia no curso de alemão. A colega Lena puxa conversa (tratamento informal: du).",
+      "falas": [
+        { "tipo": "ouvir", "falante": "Lena", "de": "Hallo! Ich bin Lena. Wie heißt du?", "pt": "Oi! Eu sou a Lena. Como você se chama?" },
+        { "tipo": "responder", "instrucao": "Diga que você se chama Lucas.", "opcoes": [
+          { "de": "Hallo, ich heiße Lucas.", "pt": "Oi, eu me chamo Lucas.", "correta": true },
+          { "de": "Ich bin dreißig Jahre alt.", "pt": "Eu tenho trinta anos.", "correta": false },
+          { "de": "Mir geht es gut.", "pt": "Estou bem.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Lena", "de": "Freut mich, Lucas! Woher kommst du?", "pt": "Prazer, Lucas! De onde você é?" },
+        { "tipo": "responder", "instrucao": "Diga que você é do Brasil.", "opcoes": [
+          { "de": "Ich komme aus Brasilien.", "pt": "Eu sou do Brasil.", "correta": true },
+          { "de": "Ich komme um acht Uhr.", "pt": "Eu chego às oito horas.", "correta": false },
+          { "de": "Ich fahre mit dem Bus.", "pt": "Eu vou de ônibus.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Lena", "de": "Toll! Und wo wohnst du jetzt?", "pt": "Legal! E onde você mora agora?" },
+        { "tipo": "responder", "instrucao": "Diga que agora você mora em Berlim.", "opcoes": [
+          { "de": "Ich wohne jetzt in Berlin.", "pt": "Agora eu moro em Berlim.", "correta": true },
+          { "de": "Ich bin Ingenieur.", "pt": "Eu sou engenheiro.", "correta": false },
+          { "de": "Ich lerne Deutsch.", "pt": "Eu estudo alemão.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Lena", "de": "Und was machst du beruflich?", "pt": "E o que você faz profissionalmente?" },
+        { "tipo": "responder", "instrucao": "Diga que é engenheiro e pergunte o mesmo a ela.", "opcoes": [
+          { "de": "Ich bin Ingenieur. Und du?", "pt": "Eu sou engenheiro. E você?", "correta": true },
+          { "de": "Ich trinke gern Kaffee. Und du?", "pt": "Eu gosto de tomar café. E você?", "correta": false },
+          { "de": "Ich habe zwei Brüder.", "pt": "Eu tenho dois irmãos.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Lena", "de": "Ich bin Studentin. Ich studiere Medizin.", "pt": "Eu sou estudante. Estudo medicina." },
+        { "tipo": "responder", "instrucao": "Comente que isso é interessante.", "opcoes": [
+          { "de": "Das ist interessant!", "pt": "Isso é interessante!", "correta": true },
+          { "de": "Das ist kaputt!", "pt": "Isso está quebrado!", "correta": false },
+          { "de": "Gute Nacht!", "pt": "Boa noite!", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Lena", "de": "Danke! Bis morgen im Kurs!", "pt": "Obrigada! Até amanhã no curso!" }
+      ]
+    },
+    {
+      "id": "direcao",
+      "titulo": "Perguntar o caminho",
+      "nivel": "A1",
+      "icone": "🧭",
+      "descricao": "Você está na rua e precisa chegar à estação de trem (tratamento formal: Sie).",
+      "falas": [
+        { "tipo": "responder", "instrucao": "Peça licença e pergunte onde fica a estação.", "opcoes": [
+          { "de": "Entschuldigung, wo ist der Bahnhof?", "pt": "Com licença, onde fica a estação?", "correta": true },
+          { "de": "Entschuldigung, wo ist die Apotheke?", "pt": "Com licença, onde fica a farmácia?", "correta": false },
+          { "de": "Hallo, wie geht's?", "pt": "Oi, tudo bem?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Passante", "de": "Der Bahnhof? Gehen Sie hier geradeaus und dann an der Ampel links.", "pt": "A estação? Siga aqui em frente e depois, no semáforo, vire à esquerda." },
+        { "tipo": "responder", "instrucao": "Confirme o caminho que você ouviu.", "opcoes": [
+          { "de": "Geradeaus und dann links?", "pt": "Em frente e depois à esquerda?", "correta": true },
+          { "de": "Geradeaus und dann rechts?", "pt": "Em frente e depois à direita?", "correta": false },
+          { "de": "Links und dann rechts?", "pt": "À esquerda e depois à direita?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Passante", "de": "Ja, genau. Dann sehen Sie den Bahnhof.", "pt": "Sim, exatamente. Aí o senhor vê a estação." },
+        { "tipo": "responder", "instrucao": "Pergunte se é longe.", "opcoes": [
+          { "de": "Ist das weit?", "pt": "É longe?", "correta": true },
+          { "de": "Ist das teuer?", "pt": "É caro?", "correta": false },
+          { "de": "Ist das lecker?", "pt": "É gostoso?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Passante", "de": "Nein, nur fünf Minuten zu Fuß.", "pt": "Não, só cinco minutos a pé." },
+        { "tipo": "responder", "instrucao": "Agradeça pela ajuda.", "opcoes": [
+          { "de": "Vielen Dank für Ihre Hilfe!", "pt": "Muito obrigado pela sua ajuda!", "correta": true },
+          { "de": "Herzlichen Glückwunsch!", "pt": "Parabéns!", "correta": false },
+          { "de": "Guten Appetit!", "pt": "Bom apetite!", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Passante", "de": "Gern geschehen! Auf Wiedersehen!", "pt": "De nada! Até logo!" }
+      ]
+    },
+    {
+      "id": "padaria",
+      "titulo": "Na padaria",
+      "nivel": "A1",
+      "icone": "🥐",
+      "descricao": "De manhã, você compra pão para o café da manhã.",
+      "falas": [
+        { "tipo": "ouvir", "falante": "Vendedora", "de": "Guten Morgen! Was darf es sein?", "pt": "Bom dia! O que vai ser?" },
+        { "tipo": "responder", "instrucao": "Cumprimente e peça quatro pãezinhos.", "opcoes": [
+          { "de": "Guten Morgen! Vier Brötchen, bitte.", "pt": "Bom dia! Quatro pãezinhos, por favor.", "correta": true },
+          { "de": "Guten Morgen! Ich bin vier Jahre alt.", "pt": "Bom dia! Eu tenho quatro anos.", "correta": false },
+          { "de": "Gute Nacht! Vier Bier, bitte.", "pt": "Boa noite! Quatro cervejas, por favor.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Vendedora", "de": "Gern. Sonst noch etwas?", "pt": "Com prazer. Mais alguma coisa?" },
+        { "tipo": "responder", "instrucao": "Peça também um pão.", "opcoes": [
+          { "de": "Ja, ein Brot, bitte.", "pt": "Sim, um pão, por favor.", "correta": true },
+          { "de": "Nein, danke, das ist alles.", "pt": "Não, obrigado, é só isso.", "correta": false },
+          { "de": "Ja, ein Taxi, bitte.", "pt": "Sim, um táxi, por favor.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Vendedora", "de": "Das macht vier Euro zwanzig.", "pt": "Dá quatro euros e vinte." },
+        { "tipo": "responder", "instrucao": "Pergunte se pode pagar com cartão.", "opcoes": [
+          { "de": "Kann ich mit Karte bezahlen?", "pt": "Posso pagar com cartão?", "correta": true },
+          { "de": "Kann ich mit dem Bus fahren?", "pt": "Posso ir de ônibus?", "correta": false },
+          { "de": "Haben Sie Kinder?", "pt": "A senhora tem filhos?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Vendedora", "de": "Ja, natürlich. Danke schön und einen schönen Tag!", "pt": "Sim, claro. Muito obrigada e tenha um bom dia!" },
+        { "tipo": "responder", "instrucao": "Agradeça e deseje o mesmo a ela.", "opcoes": [
+          { "de": "Danke, Ihnen auch!", "pt": "Obrigado, para a senhora também!", "correta": true },
+          { "de": "Danke, ich bin müde!", "pt": "Obrigado, estou cansado!", "correta": false },
+          { "de": "Bitte, ich habe Hunger!", "pt": "Por favor, estou com fome!", "correta": false }
+        ] }
+      ]
+    },
+    {
+      "id": "estacao",
+      "titulo": "Comprar uma passagem de trem",
+      "nivel": "A1",
+      "icone": "🚆",
+      "descricao": "No guichê da estação, você compra uma passagem para Hamburgo.",
+      "falas": [
+        { "tipo": "ouvir", "falante": "Atendente", "de": "Guten Tag! Wie kann ich Ihnen helfen?", "pt": "Bom dia! Como posso ajudar?" },
+        { "tipo": "responder", "instrucao": "Peça uma passagem para Hamburgo.", "opcoes": [
+          { "de": "Eine Fahrkarte nach Hamburg, bitte.", "pt": "Uma passagem para Hamburgo, por favor.", "correta": true },
+          { "de": "Ein Kilo Tomaten, bitte.", "pt": "Um quilo de tomates, por favor.", "correta": false },
+          { "de": "Eine Tasse Tee, bitte.", "pt": "Uma xícara de chá, por favor.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Atendente", "de": "Einfach oder hin und zurück?", "pt": "Só ida ou ida e volta?" },
+        { "tipo": "responder", "instrucao": "Diga que quer ida e volta.", "opcoes": [
+          { "de": "Hin und zurück, bitte.", "pt": "Ida e volta, por favor.", "correta": true },
+          { "de": "Einfach, bitte.", "pt": "Só ida, por favor.", "correta": false },
+          { "de": "Links, bitte.", "pt": "À esquerda, por favor.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Atendente", "de": "Wann möchten Sie fahren?", "pt": "Quando o(a) senhor(a) quer viajar?" },
+        { "tipo": "responder", "instrucao": "Diga que quer ir amanhã de manhã.", "opcoes": [
+          { "de": "Morgen früh, bitte.", "pt": "Amanhã cedo, por favor.", "correta": true },
+          { "de": "Gestern Abend.", "pt": "Ontem à noite.", "correta": false },
+          { "de": "Im Dezember.", "pt": "Em dezembro.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Atendente", "de": "Der Zug fährt um acht Uhr zehn. Das macht achtundfünfzig Euro.", "pt": "O trem parte às oito e dez. Dá cinquenta e oito euros." },
+        { "tipo": "responder", "instrucao": "Pergunte de qual plataforma o trem sai.", "opcoes": [
+          { "de": "Von welchem Gleis fährt der Zug?", "pt": "De qual plataforma sai o trem?", "correta": true },
+          { "de": "Wie viel kostet das?", "pt": "Quanto custa isso?", "correta": false },
+          { "de": "Wie heißen Sie?", "pt": "Como o senhor se chama?", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Atendente", "de": "Von Gleis drei. Gute Reise!", "pt": "Da plataforma três. Boa viagem!" }
+      ]
+    },
+    {
+      "id": "medico",
+      "titulo": "No médico",
+      "nivel": "A1",
+      "icone": "🩺",
+      "descricao": "Você não está se sentindo bem e vai a uma consulta.",
+      "falas": [
+        { "tipo": "ouvir", "falante": "Médica", "de": "Guten Tag! Was fehlt Ihnen?", "pt": "Bom dia! O que o(a) senhor(a) está sentindo?" },
+        { "tipo": "responder", "instrucao": "Diga que está com dor de cabeça e febre.", "opcoes": [
+          { "de": "Ich habe Kopfschmerzen und Fieber.", "pt": "Estou com dor de cabeça e febre.", "correta": true },
+          { "de": "Ich habe Hunger und Durst.", "pt": "Estou com fome e sede.", "correta": false },
+          { "de": "Ich habe zwei Kinder.", "pt": "Eu tenho dois filhos.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Médica", "de": "Seit wann haben Sie Fieber?", "pt": "Desde quando o(a) senhor(a) está com febre?" },
+        { "tipo": "responder", "instrucao": "Diga que é desde ontem.", "opcoes": [
+          { "de": "Seit gestern.", "pt": "Desde ontem.", "correta": true },
+          { "de": "Bis morgen.", "pt": "Até amanhã.", "correta": false },
+          { "de": "Um acht Uhr.", "pt": "Às oito horas.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Médica", "de": "Nehmen Sie dieses Medikament dreimal am Tag und trinken Sie viel Wasser.", "pt": "Tome este remédio três vezes por dia e beba muita água." },
+        { "tipo": "responder", "instrucao": "Repita a instrução que você ouviu para confirmar.", "opcoes": [
+          { "de": "Dreimal am Tag? Alles klar, danke.", "pt": "Três vezes por dia? Tudo certo, obrigado.", "correta": true },
+          { "de": "Einmal in der Woche? Alles klar, danke.", "pt": "Uma vez por semana? Tudo certo, obrigado.", "correta": false },
+          { "de": "Zweimal am Tag? Alles klar, danke.", "pt": "Duas vezes por dia? Tudo certo, obrigado.", "correta": false }
+        ] },
+        { "tipo": "ouvir", "falante": "Médica", "de": "Gute Besserung!", "pt": "Melhoras!" },
+        { "tipo": "responder", "instrucao": "Agradeça e despeça-se formalmente.", "opcoes": [
+          { "de": "Danke schön, auf Wiedersehen!", "pt": "Muito obrigado, até logo!", "correta": true },
+          { "de": "Prost!", "pt": "Saúde! (brinde)", "correta": false },
+          { "de": "Guten Appetit!", "pt": "Bom apetite!", "correta": false }
+        ] }
+      ]
+    }
+  ]
+}

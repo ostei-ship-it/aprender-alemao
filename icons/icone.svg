@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fundo cheio (serve também como ícone "maskable": o desenho fica dentro da zona segura central de 80%). -->
+  <rect width="512" height="512" fill="#1f2937"/>
+  <defs>
+    <clipPath id="balao">
+      <path d="M136 132h240a40 40 0 0 1 40 40v130a40 40 0 0 1-40 40H236l-62 54v-54h-38a40 40 0 0 1-40-40V172a40 40 0 0 1 40-40z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#balao)">
+    <rect x="96" y="132" width="320" height="80" fill="#000"/>
+    <rect x="96" y="212" width="320" height="70" fill="#dd0000"/>
+    <rect x="96" y="282" width="320" height="120" fill="#ffce00"/>
+  </g>
+  <path d="M136 132h240a40 40 0 0 1 40 40v130a40 40 0 0 1-40 40H236l-62 54v-54h-38a40 40 0 0 1-40-40V172a40 40 0 0 1 40-40z" fill="none" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"/>
+</svg>

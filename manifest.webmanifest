@@ -1,0 +1,18 @@
+{
+  "name": "Deutsch lernen — alemão para brasileiros",
+  "short_name": "Deutsch",
+  "description": "Vocabulário, pronúncia e fala em alemão (A1 → B1), com repetição espaçada.",
+  "lang": "pt-BR",
+  "start_url": "./#/painel",
+  "scope": "./",
+  "id": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1f2937",
+  "theme_color": "#1f2937",
+  "icons": [
+    { "src": "icons/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

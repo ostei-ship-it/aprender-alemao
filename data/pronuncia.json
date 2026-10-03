@@ -1,0 +1,252 @@
+{
+  "_formato": "Sons do alemão padrão (Hochdeutsch) difíceis para brasileiros. As comparações com o português são aproximações didáticas, não equivalências exatas. Marque dúvidas com \"revisar\": true e \"nota_revisao\".",
+  "sons": [
+    {
+      "id": "ue",
+      "titulo": "ü",
+      "ipa": "[yː] / [ʏ]",
+      "explicacao": "Não existe em português. Diga um \"i\" e, sem mexer a língua, arredonde os lábios como se fosse dizer \"u\".",
+      "erro_comum": "Falar \"u\" (Tür como \"Tur\") ou \"i\" (fünf como \"finf\").",
+      "exemplos": [
+        { "de": "über", "pt": "sobre" },
+        { "de": "müde", "pt": "cansado" },
+        { "de": "die Tür", "pt": "a porta" },
+        { "de": "fünf", "pt": "cinco" },
+        { "de": "grün", "pt": "verde" }
+      ],
+      "pares": [
+        { "a": "vier", "a_pt": "quatro", "b": "für", "b_pt": "para" },
+        { "a": "die Mutter", "a_pt": "a mãe", "b": "die Mütter", "b_pt": "as mães" }
+      ]
+    },
+    {
+      "id": "oe",
+      "titulo": "ö",
+      "ipa": "[øː] / [œ]",
+      "explicacao": "Diga um \"ê\" e, mantendo a língua no lugar, arredonde os lábios como para \"ô\".",
+      "erro_comum": "Falar \"ô\" (schön como \"chon\") ou \"ê\" (zwölf como \"tsvelf\").",
+      "exemplos": [
+        { "de": "schön", "pt": "bonito" },
+        { "de": "hören", "pt": "ouvir" },
+        { "de": "zwölf", "pt": "doze" },
+        { "de": "das Öl", "pt": "o óleo" },
+        { "de": "Köln", "pt": "Colônia (cidade)" }
+      ],
+      "pares": [
+        { "a": "schon", "a_pt": "já", "b": "schön", "b_pt": "bonito" }
+      ]
+    },
+    {
+      "id": "ae",
+      "titulo": "ä",
+      "ipa": "[ɛ] / [ɛː]",
+      "explicacao": "Soa como o \"é\" aberto de \"pé\". Pode ser curto (Äpfel) ou longo (Käse). No longo, muitos falantes nativos usam um som mais fechado, perto de \"ê\".",
+      "erro_comum": "Ler como \"a\" (Käse como \"Kase\").",
+      "exemplos": [
+        { "de": "der Käse", "pt": "o queijo" },
+        { "de": "die Äpfel", "pt": "as maçãs" },
+        { "de": "spät", "pt": "tarde" },
+        { "de": "die Männer", "pt": "os homens" }
+      ],
+      "pares": [
+        { "a": "der Mann", "a_pt": "o homem", "b": "die Männer", "b_pt": "os homens" }
+      ]
+    },
+    {
+      "id": "ach",
+      "titulo": "ch depois de a, o, u, au",
+      "ipa": "[x]",
+      "explicacao": "Som raspado no fundo da boca, parecido com o \"rr\" de \"carro\" na maioria dos sotaques brasileiros, só que mais forte e mais atrás.",
+      "erro_comum": "Falar \"k\" (acht como \"akt\") ou \"x\" de xícara.",
+      "exemplos": [
+        { "de": "acht", "pt": "oito" },
+        { "de": "das Buch", "pt": "o livro" },
+        { "de": "auch", "pt": "também" },
+        { "de": "die Nacht", "pt": "a noite" },
+        { "de": "kochen", "pt": "cozinhar" }
+      ]
+    },
+    {
+      "id": "ich",
+      "titulo": "ch depois de e, i, ä, ö, ü, ei, eu e consoantes; e no final -ig",
+      "ipa": "[ç]",
+      "explicacao": "Coloque a língua na posição do \"i\" e sopre o ar com força, sem vibrar a voz, como um chiado suave. Não é o \"x\" de \"xícara\" (lábios não se projetam) nem \"k\". A terminação -ig também tem esse som no alemão padrão: zwanzig, richtig.",
+      "erro_comum": "Falar \"ish\" (ich como \"ix\") ou \"ik\".",
+      "exemplos": [
+        { "de": "ich", "pt": "eu" },
+        { "de": "nicht", "pt": "não" },
+        { "de": "die Milch", "pt": "o leite" },
+        { "de": "das Mädchen", "pt": "a menina" },
+        { "de": "zwanzig", "pt": "vinte" },
+        { "de": "richtig", "pt": "certo" }
+      ],
+      "pares": [
+        { "a": "die Nacht", "a_pt": "a noite (ach)", "b": "nicht", "b_pt": "não (ich)" }
+      ]
+    },
+    {
+      "id": "r",
+      "titulo": "r",
+      "ipa": "[ʁ] / [ɐ]",
+      "explicacao": "No início da sílaba é um \"r\" de garganta, produzido no fundo da boca, mais suave que o \"rr\" brasileiro e com a voz vibrando. Nunca o \"r\" de \"caro\" (batida da língua). No fim da sílaba ele quase vira uma vogal \"a\" fraca: der ≈ \"déa\", Wasser ≈ \"Vássa\", vier ≈ \"fía\".",
+      "erro_comum": "Pronunciar o \"r\" final como o \"r\" caipira ou batido (\"derr\", \"Wasserr\").",
+      "exemplos": [
+        { "de": "rot", "pt": "vermelho" },
+        { "de": "das Brot", "pt": "o pão" },
+        { "de": "die Frau", "pt": "a mulher" },
+        { "de": "der", "pt": "o (artigo)" },
+        { "de": "das Wasser", "pt": "a água" },
+        { "de": "vier", "pt": "quatro" }
+      ]
+    },
+    {
+      "id": "z",
+      "titulo": "z e tz",
+      "ipa": "[ts]",
+      "explicacao": "O z alemão é sempre \"ts\", como em \"tsé-tsé\". O tz também.",
+      "erro_comum": "Ler como o z do português (zehn como \"zên\").",
+      "exemplos": [
+        { "de": "zehn", "pt": "dez" },
+        { "de": "die Zeit", "pt": "o tempo" },
+        { "de": "der Zug", "pt": "o trem" },
+        { "de": "das Zimmer", "pt": "o quarto" },
+        { "de": "die Katze", "pt": "o gato" }
+      ]
+    },
+    {
+      "id": "s",
+      "titulo": "s antes de vogal",
+      "ipa": "[z]",
+      "explicacao": "No começo da palavra ou entre vogais, o s soa como o \"z\" de \"zebra\". O ß e o ss são sempre \"s\" forte.",
+      "erro_comum": "Falar \"s\" forte em sieben, Sonne, Saft.",
+      "exemplos": [
+        { "de": "sieben", "pt": "sete" },
+        { "de": "die Sonne", "pt": "o sol" },
+        { "de": "der Saft", "pt": "o suco" },
+        { "de": "lesen", "pt": "ler" },
+        { "de": "die Straße", "pt": "a rua (ß = s forte)" }
+      ]
+    },
+    {
+      "id": "w",
+      "titulo": "w",
+      "ipa": "[v]",
+      "explicacao": "O w alemão soa como o \"v\" do português.",
+      "erro_comum": "Falar \"u\" como em inglês (Wasser como \"uásser\").",
+      "exemplos": [
+        { "de": "das Wasser", "pt": "a água" },
+        { "de": "der Wein", "pt": "o vinho" },
+        { "de": "wo", "pt": "onde" },
+        { "de": "die Woche", "pt": "a semana" },
+        { "de": "das Wetter", "pt": "o tempo (clima)" }
+      ],
+      "pares": [
+        { "a": "wir", "a_pt": "nós (w = v)", "b": "vier", "b_pt": "quatro (v = f)" }
+      ]
+    },
+    {
+      "id": "v",
+      "titulo": "v",
+      "ipa": "[f] (palavras alemãs) / [v] (palavras estrangeiras)",
+      "explicacao": "Em palavras de origem alemã o v soa como \"f\". Em palavras vindas de outras línguas costuma soar como \"v\".",
+      "erro_comum": "Falar \"v\" em Vater, vier, viel.",
+      "exemplos": [
+        { "de": "der Vater", "pt": "o pai (f)" },
+        { "de": "vier", "pt": "quatro (f)" },
+        { "de": "viel", "pt": "muito (f)" },
+        { "de": "von", "pt": "de (f)" },
+        { "de": "die Universität", "pt": "a universidade (v)" }
+      ]
+    },
+    {
+      "id": "ei-ie",
+      "titulo": "ei × ie",
+      "ipa": "ei [aɪ̯] · ie [iː]",
+      "explicacao": "Regra prática: leia a segunda letra. ei soa \"ai\"; ie é um \"i\" longo.",
+      "erro_comum": "Ler ei como \"ei\" do português (drei como \"drêi\").",
+      "exemplos": [
+        { "de": "drei", "pt": "três (ai)" },
+        { "de": "mein", "pt": "meu (ai)" },
+        { "de": "klein", "pt": "pequeno (ai)" },
+        { "de": "das Bier", "pt": "a cerveja (i)" },
+        { "de": "spielen", "pt": "jogar / brincar (i)" },
+        { "de": "die Liebe", "pt": "o amor (i)" }
+      ],
+      "pares": [
+        { "a": "der Wein", "a_pt": "o vinho", "b": "Wien", "b_pt": "Viena" }
+      ]
+    },
+    {
+      "id": "eu",
+      "titulo": "eu e äu",
+      "ipa": "[ɔʏ̯]",
+      "explicacao": "Os dois soam parecido com \"ói\".",
+      "erro_comum": "Ler letra por letra (\"e-u\").",
+      "exemplos": [
+        { "de": "neu", "pt": "novo" },
+        { "de": "heute", "pt": "hoje" },
+        { "de": "Deutsch", "pt": "alemão" },
+        { "de": "der Freund", "pt": "o amigo" },
+        { "de": "die Häuser", "pt": "as casas" }
+      ]
+    },
+    {
+      "id": "finais",
+      "titulo": "Consoantes finais",
+      "ipa": "b → [p] · d → [t] · g → [k]",
+      "explicacao": "No fim da palavra (ou da sílaba), b, d e g ficam surdos: soam p, t e k. E não acrescente um \"i\" depois da consoante final: Hund, não \"Húndi\".",
+      "erro_comum": "Dizer \"Tagui\", \"Húndi\", \"guélbi\".",
+      "exemplos": [
+        { "de": "der Tag", "pt": "o dia (k)" },
+        { "de": "der Hund", "pt": "o cachorro (t)" },
+        { "de": "gelb", "pt": "amarelo (p)" },
+        { "de": "das Kind", "pt": "a criança (t)" },
+        { "de": "und", "pt": "e (t)" }
+      ],
+      "pares": [
+        { "a": "der Tag", "a_pt": "o dia (g soa k)", "b": "die Tage", "b_pt": "os dias (g volta a ser g)" }
+      ]
+    },
+    {
+      "id": "e-final",
+      "titulo": "e átono no final",
+      "ipa": "[ə]",
+      "explicacao": "O e final sem acento é uma vogal neutra, curta e relaxada, como um \"ê\" bem fraco, quase engolido. Não vira \"i\" como no português do Brasil.",
+      "erro_comum": "Dizer \"Danki\", \"bitchi\", \"Schuli\".",
+      "exemplos": [
+        { "de": "danke", "pt": "obrigado" },
+        { "de": "bitte", "pt": "por favor" },
+        { "de": "die Schule", "pt": "a escola" },
+        { "de": "die Tasse", "pt": "a xícara" }
+      ]
+    },
+    {
+      "id": "h",
+      "titulo": "h",
+      "ipa": "[h] ou mudo",
+      "explicacao": "No início da palavra ou da sílaba o h é pronunciado, como um sopro (o \"rr\" bem leve de \"rato\"). Depois de vogal ele é mudo e só indica que a vogal é longa. Em Bahnhof, o primeiro h é mudo e o segundo é pronunciado.",
+      "erro_comum": "Não pronunciar o h inicial (Haus como \"aus\", que é outra palavra!).",
+      "exemplos": [
+        { "de": "das Haus", "pt": "a casa (h soprado)" },
+        { "de": "heute", "pt": "hoje (h soprado)" },
+        { "de": "sehr", "pt": "muito (h mudo)" },
+        { "de": "die Uhr", "pt": "o relógio (h mudo)" },
+        { "de": "der Bahnhof", "pt": "a estação" }
+      ]
+    },
+    {
+      "id": "sch-sp-st",
+      "titulo": "sch, sp e st",
+      "ipa": "[ʃ] · [ʃp] · [ʃt]",
+      "explicacao": "sch soa como o \"x\" de \"xícara\". No começo da palavra (ou de uma parte da palavra composta), sp e st também começam com esse som: \"xp\", \"xt\". No meio ou no fim (ist, Fenster) o s é normal.",
+      "erro_comum": "Dizer \"isprechen\" ou \"istadt\" (sem acrescentar \"i\" antes!).",
+      "exemplos": [
+        { "de": "die Schule", "pt": "a escola" },
+        { "de": "sprechen", "pt": "falar" },
+        { "de": "die Stadt", "pt": "a cidade" },
+        { "de": "verstehen", "pt": "entender" },
+        { "de": "ist", "pt": "é (s normal)" }
+      ]
+    }
+  ]
+}

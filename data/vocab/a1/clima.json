@@ -1,0 +1,23 @@
+{
+  "tema": "clima",
+  "nivel": "A1",
+  "palavras": [
+    {"id":"clima-wetter","alemao":"Wetter","classe":"substantivo","artigo":"das","plural":null,"portugues":"tempo (clima)","exemplo":"Wie ist das Wetter heute?","exemplo_pt":"Como está o tempo hoje?","tema":"clima","nivel":"A1"},
+    {"id":"clima-sonne","alemao":"Sonne","classe":"substantivo","artigo":"die","plural":"Sonnen","portugues":"sol","exemplo":"Die Sonne scheint.","exemplo_pt":"O sol está brilhando.","tema":"clima","nivel":"A1"},
+    {"id":"clima-regen","alemao":"Regen","classe":"substantivo","artigo":"der","plural":null,"portugues":"chuva","exemplo":"Ich mag keinen Regen.","exemplo_pt":"Eu não gosto de chuva.","tema":"clima","nivel":"A1"},
+    {"id":"clima-regnen","alemao":"regnen","classe":"verbo","portugues":"chover","exemplo":"Es regnet schon den ganzen Tag.","exemplo_pt":"Está chovendo o dia inteiro.","tema":"clima","nivel":"A1"},
+    {"id":"clima-schnee","alemao":"Schnee","classe":"substantivo","artigo":"der","plural":null,"portugues":"neve","exemplo":"Im Winter gibt es Schnee.","exemplo_pt":"No inverno tem neve.","tema":"clima","nivel":"A1"},
+    {"id":"clima-schneien","alemao":"schneien","classe":"verbo","portugues":"nevar","exemplo":"Es schneit!","exemplo_pt":"Está nevando!","tema":"clima","nivel":"A1"},
+    {"id":"clima-wind","alemao":"Wind","classe":"substantivo","artigo":"der","plural":"Winde","portugues":"vento","exemplo":"Der Wind ist sehr stark.","exemplo_pt":"O vento está muito forte.","tema":"clima","nivel":"A1"},
+    {"id":"clima-wolke","alemao":"Wolke","classe":"substantivo","artigo":"die","plural":"Wolken","portugues":"nuvem","exemplo":"Die Wolken sind grau.","exemplo_pt":"As nuvens estão cinzentas.","tema":"clima","nivel":"A1"},
+    {"id":"clima-himmel","alemao":"Himmel","classe":"substantivo","artigo":"der","plural":"Himmel","portugues":"céu","exemplo":"Am Himmel sind keine Wolken.","exemplo_pt":"Não há nuvens no céu.","tema":"clima","nivel":"A1"},
+    {"id":"clima-warm","alemao":"warm","classe":"adjetivo","portugues":"quente (agradável) / morno","exemplo":"Heute ist es warm.","exemplo_pt":"Hoje está quente.","tema":"clima","nivel":"A1"},
+    {"id":"clima-heiss","alemao":"heiß","classe":"adjetivo","portugues":"muito quente","exemplo":"Im Sommer ist es oft heiß.","exemplo_pt":"No verão costuma fazer muito calor.","tema":"clima","nivel":"A1"},
+    {"id":"clima-kalt","alemao":"kalt","classe":"adjetivo","portugues":"frio","exemplo":"Im Winter ist es kalt.","exemplo_pt":"No inverno faz frio.","tema":"clima","nivel":"A1"},
+    {"id":"clima-sonnig","alemao":"sonnig","classe":"adjetivo","portugues":"ensolarado","exemplo":"Morgen wird es sonnig.","exemplo_pt":"Amanhã vai fazer sol.","tema":"clima","nivel":"A1"},
+    {"id":"clima-fruehling","alemao":"Frühling","classe":"substantivo","artigo":"der","plural":"Frühlinge","portugues":"primavera","exemplo":"Im Frühling blühen die Bäume.","exemplo_pt":"Na primavera as árvores florescem.","tema":"clima","nivel":"A1"},
+    {"id":"clima-sommer","alemao":"Sommer","classe":"substantivo","artigo":"der","plural":"Sommer","portugues":"verão","exemplo":"Im Sommer gehen wir schwimmen.","exemplo_pt":"No verão nós vamos nadar.","tema":"clima","nivel":"A1"},
+    {"id":"clima-herbst","alemao":"Herbst","classe":"substantivo","artigo":"der","plural":"Herbste","portugues":"outono","exemplo":"Im Herbst fallen die Blätter.","exemplo_pt":"No outono as folhas caem.","tema":"clima","nivel":"A1"},
+    {"id":"clima-winter","alemao":"Winter","classe":"substantivo","artigo":"der","plural":"Winter","portugues":"inverno","exemplo":"Der Winter in Deutschland ist lang.","exemplo_pt":"O inverno na Alemanha é longo.","tema":"clima","nivel":"A1"}
+  ]
+}
